@@ -31,6 +31,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="edu.gatech.cs2340.theshadybunch.clean_water_mapping.LoginActivity" />
         </activity>
+        <activity android:name=".RegistrationActivity"></activity>
     </application>
 
 </manifest>

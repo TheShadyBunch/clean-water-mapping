@@ -62,6 +62,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private Button mRegisterButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +92,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     Intent i = new Intent(getApplicationContext(), MainPageActivity.class);
                     startActivity(i);
                 }
+            }
+        });
+
+        mRegisterButton = (Button) findViewById(R.id.register_new_user_button);
+        mRegisterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), RegistrationActivity.class);
+                startActivity(i);
+
             }
         });
 
