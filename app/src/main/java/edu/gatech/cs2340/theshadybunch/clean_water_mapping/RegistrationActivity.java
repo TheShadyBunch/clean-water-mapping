@@ -1,11 +1,14 @@
 package edu.gatech.cs2340.theshadybunch.clean_water_mapping;
 
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -16,6 +19,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText ETpassword;
     private Button register_button;
     private Button cancel_button;
+    Spinner user_type_spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +33,13 @@ public class RegistrationActivity extends AppCompatActivity {
         ETpassword = (EditText) findViewById(R.id.ETpassword);
         register_button = (Button) findViewById(R.id.register_button);
         cancel_button = (Button) findViewById(R.id.cancel_button);
+        user_type_spinner = (Spinner) findViewById(R.id.user_type_spinner);
+
+        ArrayAdapter<edu.gatech.cs2340.theshadybunch.clean_water_mapping.UserTypes> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
+                UserTypes.values());
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        user_type_spinner.setAdapter(adapter);
+
 
 
         //If the cancel button is clicked, return to the login screen
@@ -41,10 +52,22 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
 
+        final AlertDialog.Builder badInputAlert = new AlertDialog.Builder(this);
+
+
         register_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+            if (attemptRegistration()) {
+                Intent i = new Intent(getApplicationContext(), MainPageActivity.class);
+                startActivity(i);
+            } else {
+                badInputAlert.setTitle("Whoops! You entered invalid user credentials.");
+                badInputAlert.setMessage("Please ensure you have entered something into all fields," +
+                        " you have entered a valid email address, and that your password is at " +
+                        "least 5 characters long.");
+                badInputAlert.show();
+            }
 
             }
         });
@@ -63,13 +86,19 @@ public class RegistrationActivity extends AppCompatActivity {
         String address = ETaddress.getText().toString();
         String password = ETpassword.getText().toString();
 
+        //make sure the user has changed the prefilled text boxes
+        if (name.equals("Name") || email.equals("Email") || address.equals("Home Address")
+                || password.equals("Password")) {
+            return false;
+        }
+
         //if the email does not contain an @ sign or a dot then it is invalid
         if (!email.contains("@") || !email.contains(".")) {
             return false;
         }
 
         //split the email around the @ symbol and make sure the domain name is legitimate and
-        //there isn't more than one @ symbols in the email address
+        //there isn't more than one @ symbol in the email address
         String[] splitEmail = email.split("@");
 
         if (!splitEmail[1].contains(".") || splitEmail[1].charAt(splitEmail[1].length() - 1) == '.'
@@ -77,6 +106,14 @@ public class RegistrationActivity extends AppCompatActivity {
             return false;
         }
 
+        //require passwords to be at least 5 characters
+        if (password.length() < 5) {
+            return false;
+        }
 
+        //TODO: implement creating a new User and adding it to the user list.
+        //waiting on new user classes
+
+        return true;
     }
 }

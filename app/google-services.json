@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "302287250739",
+    "firebase_url": "https://clean-water-mapping-76c98.firebaseio.com",
+    "project_id": "clean-water-mapping-76c98",
+    "storage_bucket": "clean-water-mapping-76c98.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:302287250739:android:92d4e282747947bd",
+        "android_client_info": {
+          "package_name": "edu.gatech.cs2340.theshadybunch.clean_water_mapping"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "302287250739-g13b89bgl14g7m5tc5gthpaosora1st7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.gatech.cs2340.theshadybunch.clean_water_mapping",
+            "certificate_hash": "8a06f329a03ac9aa23a6ccb4ccd3a18666fc3edc"
+          }
+        },
+        {
+          "client_id": "302287250739-kptd7k91304fsb9j5v7v3r7rb4qaee34.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtoi4uuU68GQKSxshkyUx8B6Ncp8x6gdQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "302287250739-kptd7k91304fsb9j5v7v3r7rb4qaee34.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
