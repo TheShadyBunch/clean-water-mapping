@@ -33,7 +33,7 @@
         </activity>
         <activity android:name=".RegistrationActivity" />
         <activity
-            android:name=".edu.gatech.cs2340.theshadybunch.clean_water_mapping.ProfileActivity"
+            android:name=".ProfileActivity"
             android:label="@string/title_activity_profile"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
