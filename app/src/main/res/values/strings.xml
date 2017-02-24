@@ -14,4 +14,6 @@
         completions."
     </string>
     <string name="title_activity_main_page">MainPageActivity</string>
+    <string name="title_activity_edit_profile">EditProfileActivity</string>
+    <string name="title_activity_profile">ProfileActivity</string>
 </resources>

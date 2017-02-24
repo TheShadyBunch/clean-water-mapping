@@ -13,11 +13,18 @@
     tools:context="edu.gatech.cs2340.theshadybunch.clean_water_mapping.MainPageActivity"
     tools:showIn="@layout/activity_main_page">
 
+    <Button
+        android:text="Logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/logout_button" />
+
     <TextView
         android:text="Main Page"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
         android:id="@+id/textView"
         tools:text="Main Page"
         android:textSize="24sp"
@@ -26,10 +33,14 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:text="Logout"
+        android:text="Edit/View Profile"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/logout_button" />
+        android:layout_height="34dp"
+        android:id="@+id/edit_profile_button"
+        app:layout_anchor="@+id/include"
+        app:layout_anchorGravity="top|center_horizontal"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
