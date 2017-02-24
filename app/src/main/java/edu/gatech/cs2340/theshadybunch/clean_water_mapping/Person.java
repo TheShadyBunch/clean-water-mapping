@@ -1,7 +1,5 @@
 package edu.gatech.cs2340.theshadybunch.clean_water_mapping;
 
-import android.widget.EditText;
-
 import java.util.List;
 
 /**

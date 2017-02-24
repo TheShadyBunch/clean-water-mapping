@@ -35,7 +35,7 @@
     <Button
         android:text="Edit/View Profile"
         android:layout_width="wrap_content"
-        android:layout_height="36dp"
+        android:layout_height="34dp"
         android:id="@+id/edit_profile_button"
         app:layout_anchor="@+id/include"
         app:layout_anchorGravity="top|center_horizontal"
