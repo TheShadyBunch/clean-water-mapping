@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="edu.gatech.cs2340.theshadybunch.clean_water_mapping.edu.gatech.cs2340.theshadybunch.clean_water_mapping.ProfileActivity"
+    tools:context="edu.gatech.cs2340.theshadybunch.clean_water_mapping.ProfileActivity"
     tools:showIn="@layout/activity_profile">
 
     <TextView
@@ -23,5 +23,93 @@
         android:textAlignment="center"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:id="@+id/name_view"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Address"
+        android:ems="10"
+        android:id="@+id/address_edit"
+        android:layout_alignBaseline="@+id/address_view"
+        android:layout_alignBottom="@+id/address_view"
+        android:layout_toEndOf="@+id/password_view"
+        android:layout_marginStart="31dp" />
+
+    <EditText
+        android:text= "Email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/email_edit"
+        android:layout_alignBaseline="@+id/email_view"
+        android:layout_alignBottom="@+id/email_view"
+        android:layout_alignStart="@+id/address_edit" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:id="@+id/name_edit"
+        android:layout_alignBaseline="@+id/name_view"
+        android:layout_alignBottom="@+id/name_view"
+        android:layout_alignStart="@+id/email_edit" />
+
+    <TextView
+        android:text="Password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/password_view"
+        android:layout_alignBaseline="@+id/password_edit"
+        android:layout_alignBottom="@+id/password_edit" />
+
+    <EditText
+        android:text= "Password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/password_edit"
+        android:layout_below="@+id/address_edit"
+        android:layout_alignStart="@+id/address_edit" />
+
+    <TextView
+        android:text="Email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/email_view"
+        android:layout_marginTop="11dp"
+        android:layout_below="@+id/name_edit"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/address_view"
+        android:layout_below="@+id/email_edit"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="15dp" />
+
+    <Button
+        android:text="Save Changes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/save_changes_button"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
 
 </RelativeLayout>
