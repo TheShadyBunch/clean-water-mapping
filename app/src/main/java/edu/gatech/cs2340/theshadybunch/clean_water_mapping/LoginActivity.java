@@ -176,7 +176,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         boolean cancel = false;
         View focusView = null;
 
-        boolean pass = isPasswordValid(password);
+        boolean pass = isPasswordValid(email, password);
 
         // Check for a valid password.
         if (TextUtils.isEmpty(password)
@@ -221,14 +221,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
-        return email.contains("@") || email.equals("user");
+        return UserManager.myUserManager.containsKey(email);
     }
 
-    private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
-        System.out.println("password is: " + password);
-        return password.length() >= 4;
+    private boolean isPasswordValid(String email, String password) {
+        return UserManager.myUserManager.validatePassword(email, password);
     }
 
     /**
