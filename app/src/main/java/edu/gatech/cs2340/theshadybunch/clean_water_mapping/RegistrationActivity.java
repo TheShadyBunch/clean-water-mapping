@@ -19,7 +19,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText ETpassword;
     private Button register_button;
     private Button cancel_button;
-    Spinner user_type_spinner;
+    private Spinner user_type_spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +85,7 @@ public class RegistrationActivity extends AppCompatActivity {
         String email = ETemail.getText().toString();
         String address = ETaddress.getText().toString();
         String password = ETpassword.getText().toString();
+        UserTypes userType = (UserTypes)user_type_spinner.getSelectedItem();
 
         //make sure the user has changed the prefilled text boxes
         if (name.equals("Name") || email.equals("Email") || address.equals("Home Address")
@@ -111,8 +112,16 @@ public class RegistrationActivity extends AppCompatActivity {
             return false;
         }
 
-        //TODO: implement creating a new User and adding it to the user list.
-        //waiting on new user classes
+        if (userType.equals(UserTypes.USER)) {
+            UserManager.myUserManager.putPerson(email, new User(name, email, address, password));
+        } else if (userType.equals(UserTypes.WORKER)){
+            UserManager.myUserManager.putPerson(email, new Worker(name, email, address, password));
+        } else if (userType.equals(UserTypes.MANAGER)){
+            UserManager.myUserManager.putPerson(email, new Manager(name, email, address, password));
+        } else if (userType.equals(UserTypes.ADMINISTRATOR)){
+            UserManager.myUserManager.putPerson(email, new Administrator(name, email, address, password));
+        }
+
 
         return true;
     }

@@ -34,6 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.Manifest.permission.READ_CONTACTS;
+import static edu.gatech.cs2340.theshadybunch.clean_water_mapping.UserManager.myUserManager;
 
 /**
  * A login screen that offers login via email/password.
@@ -175,8 +176,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         View focusView = null;
 
         // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
+        if (!TextUtils.isEmpty(password) && !isPasswordValid(email,password)) {
+            mPasswordView.setError(getString("This password is invalid");
             focusView = mPasswordView;
             cancel = true;
         }
@@ -208,13 +209,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
-        return email.contains("@") || email.equals("user");
+        return myUserManager.containsKey(email);
     }
 
-    private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
-        return password.length() >= 4;
+    private boolean isPasswordValid(String email, String password) {
+        return myUserManager.validatePassword(email, password);
     }
 
     /**
