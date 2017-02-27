@@ -22,11 +22,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Name"
         android:ems="10"
         android:id="@+id/ETname"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:hint="Name" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -34,32 +34,32 @@
         android:inputType="textEmailAddress"
         android:ems="10"
         android:id="@+id/ETemail"
-        android:text="Email"
         android:layout_below="@+id/ETname"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:hint="Email" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Home Address"
         android:ems="10"
         android:id="@+id/ETaddress"
         android:layout_below="@+id/ETemail"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:hint="Home Address" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Password"
         android:ems="10"
         android:id="@+id/ETpassword"
         android:layout_below="@+id/ETaddress"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:hint="Password" />
 
     <Button
         android:text="Register"
