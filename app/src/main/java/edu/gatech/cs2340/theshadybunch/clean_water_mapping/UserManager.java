@@ -10,6 +10,10 @@ public class UserManager {
 
     public static final UserManager myUserManager = new UserManager();
 
+    public static Person currentUser = null;
+    //this indicates the User currently logged in to the system
+    //if no one is logged in it holds null
+
     private HashMap<String, edu.gatech.cs2340.theshadybunch.clean_water_mapping.Person> users = new HashMap<>();
 
     public boolean containsKey(String email) {

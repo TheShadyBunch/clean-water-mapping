@@ -33,6 +33,7 @@ public class MainPageActivity extends AppCompatActivity {
         mLogoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                UserManager.currentUser = null;
                 Intent i = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(i);
 

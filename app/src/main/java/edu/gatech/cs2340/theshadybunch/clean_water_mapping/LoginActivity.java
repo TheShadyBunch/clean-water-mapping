@@ -91,6 +91,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             @Override
             public void onClick(View view) {
                 if(attemptLogin()) {
+                    UserManager.currentUser = UserManager.myUserManager.getPerson(mEmailView.getText().toString());
                     Intent i = new Intent(getApplicationContext(), MainPageActivity.class);
                     startActivity(i);
                 }
