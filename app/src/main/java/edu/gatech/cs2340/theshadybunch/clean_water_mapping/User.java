@@ -6,7 +6,7 @@ package edu.gatech.cs2340.theshadybunch.clean_water_mapping;
 
 public class User extends Person {
 
-    public User(String name, String email, String address, String password) {
-        super(name, email, address, password);
+    public User(String name, String email, String address, String password, String id) {
+        super(name, email, address, password, id);
     }
 }

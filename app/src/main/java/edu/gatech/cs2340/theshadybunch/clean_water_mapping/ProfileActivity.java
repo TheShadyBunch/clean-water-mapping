@@ -15,11 +15,12 @@ import android.widget.TextView;
 import edu.gatech.cs2340.theshadybunch.clean_water_mapping.R;
 
 public class ProfileActivity extends AppCompatActivity {
-    User dummy = new User("Kayla Oates", "koates7", "harrishall", "chimichangas");
+    User dummy = new User("Kayla Oates", "koates7@gatech.edu", "harrishall", "chimichangas","koates7");
     private EditText name;
     private EditText email;
     private EditText address;
     private EditText password;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

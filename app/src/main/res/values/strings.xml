@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">clean-water-mapping</string>
+    <string name="app_name">Clean Water Mapping</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>

@@ -6,8 +6,8 @@ package edu.gatech.cs2340.theshadybunch.clean_water_mapping;
 
 public class Manager extends Person {
 
-    public Manager(String name, String email, String address, String password) {
-        super(name, email, address, password);
+    public Manager(String name, String email, String address, String password, String id) {
+        super(name, email, address, password, id);
     }
     public void submitPurityReport(){}
     public void viewHistoricalGraph(){}
