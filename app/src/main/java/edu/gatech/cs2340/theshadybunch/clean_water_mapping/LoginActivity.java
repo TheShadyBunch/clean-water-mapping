@@ -39,6 +39,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.Manifest.permission.READ_CONTACTS;
+import static edu.gatech.cs2340.theshadybunch.clean_water_mapping.Person.setCurrentPerson;
 
 /**
  * A login screen that offers login via email/password.
@@ -226,6 +227,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
+            setCurrentPerson(UserManager.myUserManager.getPerson(email));
             return true;
         }
     }

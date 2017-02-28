@@ -17,6 +17,17 @@ public abstract class Person {
     private boolean isBanned = false;
     private boolean isBlocked = false;
     private List myReports;
+    private static Person currentPerson;
+
+    public static Person getCurrentPerson() {
+        return currentPerson;
+    }
+    public static boolean isLoggedIn() {
+        return currentPerson != null;
+    }
+    public static void setCurrentPerson(Person person) {
+        currentPerson = person;
+    }
 
     public Person(String name, String email, String address, String password, String id) {
         this.name = name;

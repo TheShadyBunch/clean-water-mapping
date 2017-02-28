@@ -40,13 +40,13 @@ public class MainPageActivity extends AppCompatActivity {
             }
         });
 
-        //Button mEditProfileButton = (Button) findViewById(R.id.edit_profile_button);
-        //mEditProfileButton.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View view) {
-        //        startActivity(new Intent(MainPageActivity.this, ProfileActivity.class));
-        //    }
-        //});
+        Button mEditProfileButton = (Button) findViewById(R.id.edit_profile_button);
+        mEditProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainPageActivity.this, ProfileActivity.class));
+            }
+        });
 
 
     }

@@ -13,6 +13,8 @@ import android.widget.Spinner;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import static edu.gatech.cs2340.theshadybunch.clean_water_mapping.Person.setCurrentPerson;
+
 public class RegistrationActivity extends AppCompatActivity {
 
     //UI References
@@ -127,21 +129,25 @@ public class RegistrationActivity extends AppCompatActivity {
                 User u = new User(name, email, address, password, id);
                 mDatabase.child("users").child(id).setValue(u);
                 UserManager.myUserManager.putPerson(email, u);
+                setCurrentPerson(UserManager.myUserManager.getPerson(email));
                 break;
             case WORKER:
                 Worker w = new Worker(name, email, address, password, id);
                 mDatabase.child("workers").child(id).setValue(w);
                 UserManager.myUserManager.putPerson(email, w);
+                setCurrentPerson(UserManager.myUserManager.getPerson(email));
                 break;
             case MANAGER:
                 Manager m = new Manager(name, email, address, password, id);
                 mDatabase.child("managers").child(id).setValue(m);
                 UserManager.myUserManager.putPerson(email, m);
+                setCurrentPerson(UserManager.myUserManager.getPerson(email));
                 break;
             case ADMINISTRATOR:
                 Administrator a = new Administrator(name, email, address, password, id);
                 mDatabase.child("administrators").child(id).setValue(a);
                 UserManager.myUserManager.putPerson(email, a);
+                setCurrentPerson(UserManager.myUserManager.getPerson(email));
                 break;
         }
         /*TODO DELETE: switch statements replaces if statements*/
