@@ -150,16 +150,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 setCurrentPerson(UserManager.myUserManager.getPerson(email));
                 break;
         }
-        /*TODO DELETE: switch statements replaces if statements*/
-//        if (userType.equals(UserTypes.USER)) {
-//            UserManager.myUserManager.putPerson(email, new User(name, email, address, password));
-//        } else if (userType.equals(UserTypes.WORKER)){
-//            UserManager.myUserManager.putPerson(email, new Worker(name, email, address, password));
-//        } else if (userType.equals(UserTypes.MANAGER)){
-//            UserManager.myUserManager.putPerson(email, new Manager(name, email, address, password));
-//        } else if (userType.equals(UserTypes.ADMINISTRATOR)){
-//            UserManager.myUserManager.putPerson(email, new Administrator(name, email, address, password));
-//        }
+
 
 
         return true;

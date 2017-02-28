@@ -38,14 +38,6 @@ public class ProfileActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         etName = (EditText)findViewById(R.id.name_edit);
         etName.setText(name);
@@ -81,6 +73,7 @@ public class ProfileActivity extends AppCompatActivity {
                                 current.setPassword(etPassword.getText().toString());
                                 Toast.makeText(ProfileActivity.this, "Changes Accepted",
                                         Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(getApplicationContext(), MainPageActivity.class));
 
                             } else {
                                 Toast.makeText(ProfileActivity.this, "Changes not Accepted",
@@ -103,17 +96,22 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         });
-        Button mLogout = (Button) findViewById(R.id.logout);
-        mLogout.setOnClickListener(new View.OnClickListener() {
+        Button mCancel = (Button) findViewById(R.id.cancel);
+        mCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                UserManager.currentUser = null;
-                Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                Intent i = new Intent(getApplicationContext(), MainPageActivity.class);
                 startActivity(i);
 
             }
         });
     }
+
+    /**
+     * Checks if the given email is a valid email format
+     * @param email the email the user is inputting
+     * @return true if the email is valid, false if it is not
+     */
     public boolean validEmail(String email)
     {
         Pattern pattern;
@@ -123,6 +121,11 @@ public class ProfileActivity extends AppCompatActivity {
         matcher = pattern.matcher(email);
         return matcher.matches();
     }
+
+    /**
+     * Checks to make sure all the information currently entered is valid
+     * @return true if they are valid, false if not
+     */
     private boolean validChanges() {
         return (validEmail(etEmail.getText().toString()) && (etAddress.getText() != null)
                 && (!etAddress.getText().toString().equals(""))

@@ -122,6 +122,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mProgressView = findViewById(R.id.login_progress);
     }
 
+    /**
+     * Populates the autocomplete feature
+     */
     private void populateAutoComplete() {
         if (!mayRequestContacts()) {
             return;
@@ -130,6 +133,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         getLoaderManager().initLoader(0, null, this);
     }
 
+    /**
+     * Determines if we can request the user's contacts
+     * @return true if we can, false if not
+     */
     private boolean mayRequestContacts() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return true;
@@ -232,10 +239,21 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
+    /**
+     * Determines if the email is valid based on whether or not it's contained in the UserManager
+     * @param email the email we are checking
+     * @return true if the email is valid, false if it's not
+     */
     private boolean isEmailValid(String email) {
         return UserManager.myUserManager.containsKey(email);
     }
 
+    /**
+     * Determines whether the given password is the correct password for the given email
+     * @param email the email the user is trying to login with
+     * @param password the password the user is trying to log in with
+     * @return true if the password is correct, false if not
+     */
     private boolean isPasswordValid(String email, String password) {
         return UserManager.myUserManager.validatePassword(email, password);
     }
@@ -310,6 +328,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     }
 
+    /**
+     * Adds a list of emails to AutoComplete
+     * @param emailAddressCollection a list of emails to be added
+     */
     private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
         //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
         ArrayAdapter<String> adapter =
@@ -339,6 +361,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         private final String mEmail;
         private final String mPassword;
 
+        /**
+         * Creates a new UserLoginTask
+         * @param email the email of the user
+         * @param password the password of the user
+         */
         UserLoginTask(String email, String password) {
             mEmail = email;
             mPassword = password;

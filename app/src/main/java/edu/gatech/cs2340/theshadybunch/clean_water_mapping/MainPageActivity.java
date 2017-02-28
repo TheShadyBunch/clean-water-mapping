@@ -34,6 +34,7 @@ public class MainPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 UserManager.currentUser = null;
+                Person.setCurrentPerson(null);
                 Intent i = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(i);
 
@@ -44,7 +45,7 @@ public class MainPageActivity extends AppCompatActivity {
         mEditProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainPageActivity.this, ProfileActivity.class));
+                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
             }
         });
 

@@ -2,11 +2,13 @@ package edu.gatech.cs2340.theshadybunch.clean_water_mapping;
 
 /**
  * Created by secre on 2/27/2017.
+ * Enum isting possible types of water accepted by the water report
  */
 
 public enum WaterType {
     BOTTLED, WELL, STREAM, LAKE, SPRING;
 
+    @Override
     public String toString() {
         if (this == BOTTLED) {
             return "Bottled";

@@ -8,7 +8,9 @@ import java.util.HashMap;
 
 public class UserManager {
 
+
     public static final UserManager myUserManager = new UserManager();
+    //single UserManager that holds all the users in the system
 
     public static Person currentUser = null;
     //this indicates the User currently logged in to the system
@@ -16,18 +18,40 @@ public class UserManager {
 
     private HashMap<String, edu.gatech.cs2340.theshadybunch.clean_water_mapping.Person> users = new HashMap<>();
 
+    /**
+     * Checks to see if the UserManager contains a user with this email
+     * @param email the email being checked
+     * @return true if it contains this user, false if not
+     */
     public boolean containsKey(String email) {
         return users.containsKey(email);
     }
 
+    /**
+     * Gets the person in the UserManager with this email
+     * @param email the email for the user we are trying to retrieve
+     * @return the person with the given email, or null if there is no person with this email
+     * in this UserManager
+     */
     public edu.gatech.cs2340.theshadybunch.clean_water_mapping.Person getPerson(String email) {
         return users.get(email);
     }
 
+    /**
+     * Puts the given person into this UserManager
+     * @param email the person's email
+     * @param person the person object being put in
+     */
     public void putPerson(String email, edu.gatech.cs2340.theshadybunch.clean_water_mapping.Person person) {
         users.put(email, person);
     }
 
+    /**
+     * Checks to see if the given password is valid for the user with the given email
+     * @param email the email of the user trying to log in
+     * @param password the password we are checking
+     * @return true if the password is correct, false if it is not or if the given user doesn't exist
+     */
     public boolean validatePassword(String email, String password) {
         if (!users.containsKey(email)) {
             return false;
