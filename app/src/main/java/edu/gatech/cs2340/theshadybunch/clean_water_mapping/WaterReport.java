@@ -8,15 +8,15 @@ import java.util.Date;
  */
 
 public class WaterReport {
-    private Person reporter;
-    private Date timeReported;
+    protected Person reporter;
+    protected Date timeReported;
     //when creating a new water report, use the java.util.Date.Date() method
     //which will create a new date object storing the current date/time
-    private double latitude;
-    private double longitude;
-    private WaterType waterType;
-    private WaterCondition waterCondition;
-    private int reportID;
+    protected double latitude;
+    protected double longitude;
+    protected WaterType waterType;
+    protected WaterCondition waterCondition;
+    protected int reportID;
 
     /**
      * Creates a new WaterReport
@@ -103,7 +103,9 @@ public class WaterReport {
 
         return "Water Report made by " + reporter.getName() + " on " + timeReported.toString()
                 + "\nLocation: " + Double.toString(latitude) + latEnding + Double.toString(longitude)
-                + longEnding + "\nWater Type: " + waterType.toString() + "\nWater Condition: "
-                + waterCondition.toString() + "\nReport ID: " + Integer.toString(reportID);
+                + longEnding
+                + "\nWater Type: " + waterType.toString()
+                + "\nWater Condition: " + waterCondition.toString()
+                + "\nReport ID: " + Integer.toString(reportID);
     }
 }
