@@ -39,8 +39,7 @@ public class HistoryGraph {
             if (waterReport.getLatitude() == this.latitude && waterReport.getLongitude() == this.longitude
                     && waterReport.getTimeReported().getYear() == (year - 1900)
                     && waterReport instanceof PurityReport) {
-                PurityReports.add(waterReport);
-                //TODO: Verify that this is the correct way to add a purity report.
+                PurityReports.add((PurityReport) waterReport);
             }
         }
 
