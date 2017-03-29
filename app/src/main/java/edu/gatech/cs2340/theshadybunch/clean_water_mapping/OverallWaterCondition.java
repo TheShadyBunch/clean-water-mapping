@@ -17,5 +17,6 @@ public enum OverallWaterCondition {
         } else {
             return "Unsafe water";
         }
+        //TODO: Maybe change the above else to an else if, and create an else that reports an error?
     }
 }

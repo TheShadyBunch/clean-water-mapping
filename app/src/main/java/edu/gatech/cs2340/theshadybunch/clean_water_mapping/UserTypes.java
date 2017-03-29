@@ -7,4 +7,6 @@ package edu.gatech.cs2340.theshadybunch.clean_water_mapping;
 
 public enum UserTypes {
     USER, WORKER, MANAGER, ADMINISTRATOR
+
+    //TODO: Maybe create a toString() here?
 }

@@ -40,6 +40,7 @@ public class HistoryGraph {
                     && waterReport.getTimeReported().getYear() == (year - 1900)
                     && waterReport instanceof PurityReport) {
                 PurityReports.add(waterReport);
+                //TODO: Verify that this is the correct way to add a purity report.
             }
         }
 

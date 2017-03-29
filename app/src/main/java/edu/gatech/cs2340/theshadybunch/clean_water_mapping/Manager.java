@@ -18,7 +18,7 @@ public class Manager extends Person {
         super(name, email, address, password, id);
     }
 
-    //may implement these methods later
+    //TODO: Implement the following methods
     //public void submitPurityReport(){}
     //public void viewHistoricalGraph(){}
     //public void deleteReport(){}

@@ -18,6 +18,6 @@ public class Worker extends Person {
         super(name, email, address, password, id);
     }
 
-    //may implement this later
+    //TODO: Implement this method?
     //public void submitPurityReport(){}
 }

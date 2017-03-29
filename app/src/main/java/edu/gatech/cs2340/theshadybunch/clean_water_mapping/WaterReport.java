@@ -6,7 +6,7 @@ import java.util.Date;
  * Created by Theresa Mayo on 2/27/2017.
  * Class that represents a new WaterReport that has been entered into the system
  */
-
+//TODO: Maybe we want to add PurityReport's variables to this, and allow them to be null?
 public class WaterReport {
     protected Person reporter;
     protected Date timeReported;

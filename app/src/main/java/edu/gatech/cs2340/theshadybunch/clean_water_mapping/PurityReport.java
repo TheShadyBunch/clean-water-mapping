@@ -7,6 +7,7 @@ import java.util.Date;
  * Class that represents a new PurityReport that has been entered into the system
  */
 
+//TODO: Find a way to actually create a PurityReport
 public class PurityReport extends WaterReport {
     protected double virusPPM;
     protected double contaminantPPM;

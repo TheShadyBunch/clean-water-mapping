@@ -57,7 +57,7 @@ public abstract class Person {
         this.id = id;
     }
 
-    //may implement these methods later
+    //TODO: Implement these methods?
     //public void login(){}
     //public void viewWaterReports(){}
     //public void submitSourceReport(){}

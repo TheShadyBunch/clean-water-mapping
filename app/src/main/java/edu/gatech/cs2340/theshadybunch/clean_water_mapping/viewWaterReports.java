@@ -48,6 +48,7 @@ public class viewWaterReports extends AppCompatActivity {
             }
         });
 
+        //TODO: Implement a means of editing water reports to add purity variable
     }
 
 }

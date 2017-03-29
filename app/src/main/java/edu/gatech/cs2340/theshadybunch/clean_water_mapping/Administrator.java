@@ -18,7 +18,7 @@ public class Administrator extends Person {
         super(name, email, address, password, id);
     }
 
-    //may implement these methods later
+    //TODO: Implement the following methods
     //public void deletePerson(){}
     //public void banPerson(){}
     //public void unblockPerson(){}

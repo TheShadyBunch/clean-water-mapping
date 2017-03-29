@@ -19,6 +19,7 @@ import java.util.Date;
 
 import static edu.gatech.cs2340.theshadybunch.clean_water_mapping.R.id.spinner_water_type;
 
+//TODO: Figure out why the main page is not populating
 public class MainPageActivity extends AppCompatActivity {
 
     @Override

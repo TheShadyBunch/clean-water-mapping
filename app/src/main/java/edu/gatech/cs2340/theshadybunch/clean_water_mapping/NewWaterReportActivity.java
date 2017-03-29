@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import java.util.Date;
 
-
+//TODO: Create NewPurityReportActivity that extends this class?
 public class NewWaterReportActivity extends AppCompatActivity {
     private EditText etLatitude;
     private EditText etLongitude;
