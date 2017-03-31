@@ -1,9 +1,8 @@
 package edu.gatech.cs2340.theshadybunch.clean_water_mapping;
 
-import java.util.Date;
-
 /**
  * Created by James Johnson on 3/12/17.
+ * Modified by Josh Terry on 3/31/17.
  * Class that represents a new PurityReport that has been entered into the system
  */
 
