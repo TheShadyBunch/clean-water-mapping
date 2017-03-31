@@ -8,35 +8,30 @@ import java.util.Date;
  */
 
 //TODO: Find a way to actually create a PurityReport
-public class PurityReport extends WaterReport {
+public class PurityReport {
+    public int reportID;
     protected double virusPPM;
     protected double contaminantPPM;
+    protected WaterReport parent;
     protected OverallWaterCondition overallWaterCondition;
 
     /**
      * Creates a new PurityReport
-     * @param reporter the person who reported this report
-     * @param timeReported a Date object representing when this was reported
-     * @param latitude the latitude of this report
-     * @param longitude the longitude of this report
-     * @param waterType The type of water found (e.g. bottled, stream, lake...)
-     * @param waterCondition the condition of the water found (Potable, treatable-clear...)
-     * @param overallWaterCondition the condition of the water found (Potable, treatable-clear...)
+     * @param reportID The hash key of this report.
+     * @param parent The WaterReport that this points to.
      * @param virusPPM The parts per million of virus
      * @param contaminantPPM The parts per million of contaminant
+     * @param overallWaterCondition The overall condition of the water
      */
-    public PurityReport(Person reporter, Date timeReported, double latitude, double longitude,
-                        WaterType waterType, WaterCondition waterCondition,
-                        OverallWaterCondition overallWaterCondition, double virusPPM,
-                        double contaminantPPM) {
-        super(reporter, timeReported, latitude, longitude, waterType, waterCondition);
-        this.overallWaterCondition = overallWaterCondition;
+    public PurityReport(WaterReport parent, double virusPPM, double contaminantPPM,
+                        OverallWaterCondition overallWaterCondition, int reportID) {
+        this.parent = parent;
         this.virusPPM = virusPPM;
         this.contaminantPPM = contaminantPPM;
+        this.overallWaterCondition = overallWaterCondition;
 
-        reportID = 17 * reporter.hashCode() * timeReported.hashCode() * (int) latitude
-                * (int) longitude * waterType.hashCode() * waterCondition.hashCode()
-                * (int) virusPPM * (int) contaminantPPM * overallWaterCondition.hashCode();
+        this.reportID = 17 * parent.hashCode() * (int) virusPPM
+                * (int) contaminantPPM * overallWaterCondition.hashCode();
     }
 
     /**
@@ -56,6 +51,14 @@ public class PurityReport extends WaterReport {
      * @return the contaminant PPM of this purity report
      */
     public double getContaminantPPM() { return contaminantPPM; }
+
+    /**
+     * gets the report ID of this purity report
+     * @return the report ID of this purity report
+     */
+    public int getReportID() {
+        return reportID;
+    }
 
     @Override
     public String toString() {

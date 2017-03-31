@@ -8,13 +8,12 @@ import java.util.HashMap;
  * Keeps track of the WaterReports currently in the system
  */
 
-//TODO: Create PurityReportManager that extends this?
 public class WaterReportManager {
 
     //single instance used by the whole app to keep track of water reports
     public static final WaterReportManager myWaterReports = new WaterReportManager();
 
-    private HashMap<Integer,WaterReport> waterReports = new HashMap<>();
+    private HashMap<Integer, WaterReport> waterReports = new HashMap<>();
 
     /**
      * adds the report to this WaterReportManager
