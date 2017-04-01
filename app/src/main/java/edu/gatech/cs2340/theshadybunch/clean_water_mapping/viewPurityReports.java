@@ -23,9 +23,27 @@ public class viewPurityReports extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //TODO: Make activity_view_purity_reports!
         setContentView(R.layout.activity_view_purity_reports);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        /**Appends each purity report to the page**/
+        TextView report_list = (TextView)findViewById(R.id.purity_reports_list);
+        Collection<PurityReport> reports = PurityReportManager.myPurityReports.getAllPurityReports();
+        for(PurityReport report : reports){
+            report_list.append(report.toString());
+            report_list.append("\n");
+        }
+
+        /**Returns user to Main Page**/
+        Button mReturntoMain = (Button) findViewById(R.id.return_to_main);
+        mReturntoMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), MainPageActivity.class);
+                startActivity(i);
+            }
+        });
+
     }
 }

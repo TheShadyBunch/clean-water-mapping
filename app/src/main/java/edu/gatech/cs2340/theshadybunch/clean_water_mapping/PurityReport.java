@@ -61,8 +61,7 @@ public class PurityReport {
 
     @Override
     public String toString() {
-        return super.toString()
-                + "\nOverall Water Condition: " + overallWaterCondition.toString()
+        return "Overall Water Condition: " + overallWaterCondition.toString()
                 + "\nVirus PPM: " + Double.toString(virusPPM)
                 + "\nContaminant PPM: " + Double.toString(contaminantPPM);
     }
