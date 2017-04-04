@@ -14,6 +14,7 @@ public class WaterReportManager {
     public static final WaterReportManager myWaterReports = new WaterReportManager();
 
     private HashMap<Integer, WaterReport> waterReports = new HashMap<>();
+    public static WaterReport currentWaterReport;
 
     /**
      * adds the report to this WaterReportManager
@@ -28,7 +29,7 @@ public class WaterReportManager {
      * @param reportID the id of the report you are trying to get
      * @return the water report with the given ID, or null if no such report exists
      */
-    public WaterReport getReport(int reportID) {
+    public  WaterReport getReport(int reportID) {
         return waterReports.get(reportID);
     }
 
@@ -39,6 +40,7 @@ public class WaterReportManager {
     public Collection<WaterReport> getAllReports() {
         return waterReports.values();
     }
+
 
 
 }

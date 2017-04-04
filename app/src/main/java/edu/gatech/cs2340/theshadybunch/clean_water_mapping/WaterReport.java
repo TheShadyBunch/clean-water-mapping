@@ -17,6 +17,9 @@ public class WaterReport {
     protected WaterType waterType;
     protected WaterCondition waterCondition;
     protected int reportID;
+    protected PurityReport purityReport = null;
+    private static WaterReport currentWaterReport = null;
+
 
     /**
      * Creates a new WaterReport
@@ -95,6 +98,9 @@ public class WaterReport {
     public int getReportID() {
         return reportID;
     }
+    public PurityReport getPurityReport() {
+        return purityReport;
+    }
 
     @Override
     public String toString() {
@@ -108,4 +114,11 @@ public class WaterReport {
                 + "\nWater Condition: " + waterCondition.toString()
                 + "\nReport ID: " + Integer.toString(reportID);
     }
+    public static WaterReport getCurrentWaterReport() {
+        return currentWaterReport;
+    }
+    public static void setCurrentWaterReport(WaterReport report) {
+        currentWaterReport = report;
+    }
+
 }

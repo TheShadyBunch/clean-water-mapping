@@ -36,7 +36,7 @@ public class viewPurityReports extends AppCompatActivity {
         }
 
         /**Returns user to Main Page**/
-        Button mReturntoMain = (Button) findViewById(R.id.return_to_main);
+        Button mReturntoMain = (Button) findViewById(R.id.return_to_main_lists);
         mReturntoMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

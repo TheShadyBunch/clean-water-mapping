@@ -1,5 +1,7 @@
 package edu.gatech.cs2340.theshadybunch.clean_water_mapping;
 
+import java.util.Date;
+
 /**
  * Created by James Johnson on 3/12/17.
  * Modified by Josh Terry on 3/31/17.
@@ -13,18 +15,27 @@ public class PurityReport {
     protected double contaminantPPM;
     protected WaterReport parent;
     protected OverallWaterCondition overallWaterCondition;
+    protected Person reporter;
+    protected double latitude;
+    protected double longitude;
+    protected Date timeReported;
 
     /**
      * Creates a new PurityReport
-     * @param reportID The hash key of this report.
-     * @param parent The WaterReport that this points to.
+     * @param reporter The WaterReport's reporter
+     * @param timeReported The date the of this report
+     * @param latitude The location of this report
+     * @param longitude The location of this report
      * @param virusPPM The parts per million of virus
      * @param contaminantPPM The parts per million of contaminant
      * @param overallWaterCondition The overall condition of the water
      */
-    public PurityReport(WaterReport parent, double virusPPM, double contaminantPPM,
-                        OverallWaterCondition overallWaterCondition, int reportID) {
-        this.parent = parent;
+    public PurityReport(WaterReport parent, Person reporter, Date timeReported, double latitude, double longitude,
+                        OverallWaterCondition overallWaterCondition, double virusPPM, double contaminantPPM) {
+        this.reporter = reporter;
+        this.timeReported = timeReported;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.virusPPM = virusPPM;
         this.contaminantPPM = contaminantPPM;
         this.overallWaterCondition = overallWaterCondition;
@@ -61,8 +72,15 @@ public class PurityReport {
 
     @Override
     public String toString() {
-        return "Overall Water Condition: " + overallWaterCondition.toString()
+        String latEnding = (latitude > 0) ? "° North, " : "° South, ";
+        String longEnding = (longitude > 0) ? "° East" : "° West";
+
+        return "Water Report made by " + reporter.getName() + " on " + timeReported.toString()
+                + "\nLocation: " + Double.toString(latitude) + latEnding + Double.toString(longitude)
+                + longEnding
+                + "\nOverall Water Condition: " + overallWaterCondition.toString()
                 + "\nVirus PPM: " + Double.toString(virusPPM)
-                + "\nContaminant PPM: " + Double.toString(contaminantPPM);
+                + "\nContaminant PPM: " + Double.toString(contaminantPPM)
+                + "\nReport ID: " + Integer.toString(reportID);
     }
 }

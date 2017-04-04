@@ -34,16 +34,16 @@ public class HistoryGraph {
         this.isVirus = isVirus;
         this.year = year;
 
-        Collection<WaterReport> allReports = WaterReportManager.myWaterReports.getAllReports();
+/*        Collection<WaterReport> allReports = WaterReportManager.myWaterReports.getAllReports();
         for (WaterReport waterReport : allReports) {
             if (waterReport.getLatitude() == this.latitude && waterReport.getLongitude() == this.longitude
                     && waterReport.getTimeReported().getYear() == (year - 1900)
                     && waterReport instanceof PurityReport) {
                 PurityReports.add((PurityReport) waterReport);
             }
-        }
+        }*/
 
-        int numReports;
+/*        int numReports;
         double reportSum;
         for (int month = 0; month < 12; month++) {
             numReports = 0;
@@ -59,7 +59,7 @@ public class HistoryGraph {
                 }
             }
             points.put(month, reportSum / numReports);
-        }
+        }*/
     }
 
     /**

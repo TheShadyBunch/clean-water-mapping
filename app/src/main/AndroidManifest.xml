@@ -78,10 +78,18 @@
         <activity
             android:name=".viewWaterReports"
             android:label="@string/title_activity_view_water_reports"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".viewPurityReports"
-            android:label="@string/title_activity_view_purity_reports"
+            android:label="viewPurityReports"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".viewPurityReport"
+            android:label="@string/title_activity_view_purity_report"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".newPurityReport"
+            android:label="@string/title_activity_new_purity_report"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

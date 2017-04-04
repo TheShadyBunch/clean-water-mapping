@@ -78,8 +78,6 @@ public class NewWaterReportActivity extends AppCompatActivity {
                 }
 
 
-
-
             }
         });
         /**Cancels reports and redirects back to Main Activity**/

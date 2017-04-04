@@ -19,6 +19,7 @@ public abstract class Person {
     private List myReports;
     private static Person currentPerson;
 
+
     /**
      * @return the person currently logged in to the system
      */
