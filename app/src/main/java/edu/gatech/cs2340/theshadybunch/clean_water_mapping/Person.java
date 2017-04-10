@@ -16,6 +16,7 @@ public abstract class Person {
     private final String id;
     private static Person currentPerson;
 
+
     /**
      * @return the person currently logged in to the system
      */

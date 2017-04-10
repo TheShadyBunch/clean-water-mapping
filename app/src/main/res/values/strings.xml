@@ -19,4 +19,7 @@
     <string name="title_activity_new_water_report">NewWaterReportActivity</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_view_water_reports">viewWaterReports</string>
+    <string name="title_activity_view_water_report">viewWaterReport</string>
+    <string name="title_activity_view_purity_report">viewPurityReport</string>
+    <string name="title_activity_new_purity_report">newPurityReport</string>
 </resources>

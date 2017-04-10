@@ -8,6 +8,7 @@ import android.widget.Button;
 
 //TODO: Figure out why the main page is not populating
 public class MainPageActivity extends AppCompatActivity {
+    private Person current = Person.getCurrentPerson();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +72,18 @@ public class MainPageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), viewWaterReports.class));
 
+            }
+        });
+
+        Button mViewPurityReportsButton = (Button) findViewById(R.id.view_purity_reports);
+        if (current instanceof Manager ) {
+            mViewPurityReportsButton.setVisibility(View.VISIBLE);
+
+        }
+        mViewPurityReportsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), viewPurityReports.class));
             }
         });
 
