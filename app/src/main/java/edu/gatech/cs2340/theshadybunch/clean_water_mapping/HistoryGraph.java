@@ -7,15 +7,16 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Created by Theresa Mayo on 3/26/2017.
+ * Created by on 3/26/2017.
+ * @author Theresa Mayo
+ * @version 1.0
+ * A graph that shows historic trends in virus or contaminant PPM at a particular watr source
  */
 
 class HistoryGraph {
     private final double latitude;
     private final double longitude;
     private final int year;
-
-    private final ArrayList<PurityReport> PurityReports = new ArrayList<PurityReport>();
 
     private final HashMap<Integer, Double> points = new HashMap<Integer, Double>();
 
@@ -31,21 +32,22 @@ class HistoryGraph {
         this.longitude = longitude;
         this.year = year;
 
-/*        Collection<WaterReport> allReports = WaterReportManager.myWaterReports.getAllReports();
+        Collection<WaterReport> allReports = WaterReportManager.myWaterReports.getAllReports();
+        ArrayList<PurityReport> purityReports = new ArrayList<PurityReport>();
         for (WaterReport waterReport : allReports) {
             if (waterReport.getLatitude() == this.latitude && waterReport.getLongitude() == this.longitude
                     && waterReport.getTimeReported().getYear() == (year - 1900)
                     && waterReport instanceof PurityReport) {
-                PurityReports.add((PurityReport) waterReport);
+                purityReports.add((PurityReport) waterReport);
             }
-        }*/
+        }
 
-/*        int numReports;
+        int numReports;
         double reportSum;
         for (int month = 0; month < 12; month++) {
             numReports = 0;
             reportSum = 0.0;
-            for (PurityReport purityReport : PurityReports) {
+            for (PurityReport purityReport : purityReports) {
                 if (purityReport.getTimeReported().getMonth() == month) {
                     numReports++;
                     if (isVirus) {
@@ -56,7 +58,7 @@ class HistoryGraph {
                 }
             }
             points.put(month, reportSum / numReports);
-        }*/
+        }
     }
 
     /**

@@ -2,23 +2,18 @@ package edu.gatech.cs2340.theshadybunch.clean_water_mapping;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
 
 import java.util.Collection;
 
 import static edu.gatech.cs2340.theshadybunch.clean_water_mapping.WaterReport.setCurrentWaterReport;
 
 public class viewWaterReports extends AppCompatActivity {
-    Person currentPerson = Person.getCurrentPerson();
+    private final Person currentPerson = Person.getCurrentPerson();
    // WaterReport currentReport;
 
     @Override
@@ -44,7 +39,7 @@ public class viewWaterReports extends AppCompatActivity {
             }
         }
         Button mReturnToMain = (Button) findViewById(R.id.main_return);
-        mReturnToMain.setText("Return to Main");
+        mReturnToMain.setText(getString(R.string.return_to_main));
         mReturnToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,7 +58,7 @@ public class viewWaterReports extends AppCompatActivity {
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
-        /**Appends each water report to the page**/
+        /*Appends each water report to the page**/
         //TextView report_list = (TextView)findViewById(R.id.water_reports_list);
 
 

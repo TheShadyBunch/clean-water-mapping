@@ -12,7 +12,7 @@ public class PurityReportManager {
 
     public static final PurityReportManager myPurityReports = new PurityReportManager();
 
-    private HashMap<Integer, PurityReport> purityReports = new HashMap<>();
+    private final HashMap<Integer, PurityReport> purityReports = new HashMap<>();
 
     /**
      * adds the purity report to this PurityReportManager

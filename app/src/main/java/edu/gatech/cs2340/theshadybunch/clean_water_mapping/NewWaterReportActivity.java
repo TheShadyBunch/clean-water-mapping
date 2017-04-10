@@ -48,7 +48,7 @@ public class NewWaterReportActivity extends AppCompatActivity {
         adapt1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_water_condition.setAdapter(adapt2);
         final AlertDialog.Builder mBuilder = new AlertDialog.Builder(this);
-        /**Confirms water report submission and submits it to viewWaterReports**/
+        /*Confirms water report submission and submits it to viewWaterReports**/
         Button mConfirmWaterReportButton = (Button) findViewById(R.id.submit_report);
         mConfirmWaterReportButton.setOnClickListener(new View.OnClickListener(){
 
@@ -62,7 +62,7 @@ public class NewWaterReportActivity extends AppCompatActivity {
                 Date timeReported = new Date();
                 double latitude = Double.parseDouble(etLatitude.getText().toString());
                 double longitude = Double.parseDouble(etLongitude.getText().toString());
-                /**Makes sure something is entered for latitude and longitude before submission**/
+                /*Makes sure something is entered for latitude and longitude before submission**/
                 if(etLatitude.getText().toString().equals("") || etLongitude.getText().toString().equals("")) {
                     mBuilder.setTitle("Error Invalid Inputs");
                     mBuilder.setMessage("Latitude and Longitude cannot be empty!");
@@ -80,7 +80,7 @@ public class NewWaterReportActivity extends AppCompatActivity {
 
             }
         });
-        /**Cancels reports and redirects back to Main Activity**/
+        /*Cancels reports and redirects back to Main Activity**/
         Button mCancel = (Button) findViewById(R.id.cancel_report);
         mCancel.setOnClickListener(new View.OnClickListener() {
             @Override

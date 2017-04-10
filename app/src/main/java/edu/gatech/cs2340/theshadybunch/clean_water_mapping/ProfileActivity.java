@@ -1,18 +1,13 @@
 package edu.gatech.cs2340.theshadybunch.clean_water_mapping;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.regex.Matcher;
@@ -47,7 +42,7 @@ public class ProfileActivity extends AppCompatActivity {
         etAddress.setText(address);
         etPassword = (EditText)findViewById(R.id.password_edit);
         etPassword.setText(password);
-        /** verifies changes are acceptable/prompts user for password and username**/
+        /* verifies changes are acceptable/prompts user for password and username**/
         Button mSaveChanges = (Button) findViewById(R.id.save_changes_button);
         final AlertDialog.Builder mBuilder = new AlertDialog.Builder(this);
         mSaveChanges.setOnClickListener(new View.OnClickListener() {

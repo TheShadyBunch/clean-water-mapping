@@ -1,7 +1,10 @@
 package edu.gatech.cs2340.theshadybunch.clean_water_mapping;
 
 /**
- * Created by Kayla Oates on 2/24/2017.
+ * Created on 2/24/2017.
+ * @author Kayla Oates
+ * @version 1.0
+ * A manager is a user type that can perform special tasks in the system
  */
 
 class Manager extends Person {

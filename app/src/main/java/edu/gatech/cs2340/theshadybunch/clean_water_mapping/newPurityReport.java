@@ -17,11 +17,7 @@ import android.widget.Toast;
 import java.util.Date;
 
 public class newPurityReport extends AppCompatActivity {
-    private EditText etLatitude;
-    private EditText etLongitude;
-    private EditText etVirusPPM;
-    private EditText etCPPM;
-    private WaterReport parentReport = WaterReport.getCurrentWaterReport();
+    private final WaterReport parentReport = WaterReport.getCurrentWaterReport();
 
 
 
@@ -60,13 +56,12 @@ public class newPurityReport extends AppCompatActivity {
                 EditText etVirusPPM = (EditText) findViewById(R.id.virus_ppm);
                 EditText etCppm = (EditText) findViewById(R.id.c_ppm);
                 OverallWaterCondition condition = (OverallWaterCondition)overall_condition.getSelectedItem();
-                Date timeReported = new Date();
                 double latitude = Double.parseDouble(etLatitude.getText().toString());
                 double longitude = Double.parseDouble(etLongitude.getText().toString());
                 double virus = Double.parseDouble(etVirusPPM.getText().toString());
                 double c = Double.parseDouble(etCppm.getText().toString());
                 Date date = new Date();
-                /**Makes sure something is entered for latitude and longitude before submission**/
+                /*Makes sure something is entered for latitude and longitude before submission**/
                 if(etLatitude == null || etLongitude == null || etCppm == null || etVirusPPM == null) {
                     mBuilder.setTitle("Error Invalid Inputs");
                     mBuilder.setMessage("All values must be filled");
@@ -81,7 +76,7 @@ public class newPurityReport extends AppCompatActivity {
                 }
             }
         });
-        /**Cancels reports and redirects back to Main Activity**/
+        /*Cancels reports and redirects back to Main Activity**/
         Button mCancel = (Button) findViewById(R.id.cancel_purity);
         mCancel.setOnClickListener(new View.OnClickListener() {
             @Override

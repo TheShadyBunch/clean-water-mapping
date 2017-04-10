@@ -1,11 +1,10 @@
 package edu.gatech.cs2340.theshadybunch.clean_water_mapping;
 
-import android.widget.EditText;
-
-import java.util.List;
-
 /**
- * Created by Kayla Oates on 2/24/2017.
+ * Created on 2/24/2017.
+ * @author Kayla Oates
+ * @version 1.0
+ * A model class for a person using the system.
  */
 
 public abstract class Person {
@@ -88,6 +87,7 @@ public abstract class Person {
      */
     public String getPassword() {
         return password;
+    }
 
     /**
      * @return the person's ID

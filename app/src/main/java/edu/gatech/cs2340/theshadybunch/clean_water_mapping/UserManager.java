@@ -3,7 +3,10 @@ package edu.gatech.cs2340.theshadybunch.clean_water_mapping;
 import java.util.HashMap;
 
 /**
- * Created by Theresa Mayo on 2/24/2017.
+ * Created on 2/24/2017.
+ * @author Theresa mayo
+ * @version 1.0
+ * Class to keep track of all the users in the system.
  */
 
 public class UserManager {

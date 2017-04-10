@@ -1,10 +1,13 @@
 package edu.gatech.cs2340.theshadybunch.clean_water_mapping;
 
 /**
- * Created by Kayla Oates on 2/24/2017.
+ * Created on 2/24/2017.
+ * @author Kayla Oates
+ * @version 1.0
+ * A user in the system
  */
 
-public class User extends Person {
+class User extends Person {
 
     /**
      * creates a new user
