@@ -1,10 +1,10 @@
 package edu.gatech.cs2340.theshadybunch.clean_water_mapping;
 
 /**
- * Created by kvict on 2/24/2017.
+ * Created by Kayla Oates on 2/24/2017.
  */
 
-public class Worker extends Person {
+class Worker extends Person {
 
     /**
      * creates a new worker

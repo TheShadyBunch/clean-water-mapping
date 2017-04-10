@@ -7,31 +7,28 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Created by secre on 3/26/2017.
+ * Created by Theresa Mayo on 3/26/2017.
  */
 
-public class HistoryGraph {
-    private double latitude;
-    private double longitude;
-    private int year;
-    //will hold true if this graph measures viruses, false if it measures contaminants
-    private boolean isVirus;
+class HistoryGraph {
+    private final double latitude;
+    private final double longitude;
+    private final int year;
 
-    private ArrayList<PurityReport> PurityReports;
+    private final ArrayList<PurityReport> PurityReports = new ArrayList<PurityReport>();
 
-    private HashMap<Integer, Double> points;
+    private final HashMap<Integer, Double> points = new HashMap<Integer, Double>();
 
     /**
      * Constructor for a new HistoryGraph
      * @param latitude the latitude of the water source a graph is being generated for
      * @param longitude the longitude of the water source a graph is being generated for
-     * @param isVirus boolean reperesenting whether the graph is tracking Virus PPM or Contaminant PPM
+     * @param isVirus boolean representing whether the graph is tracking Virus PPM or Contaminant PPM
      * @param year the year the graph is being generated for
      */
     public HistoryGraph(double latitude, double longitude, boolean isVirus, int year) {
         this.latitude = latitude;
         this.longitude = longitude;
-        this.isVirus = isVirus;
         this.year = year;
 
         Collection<WaterReport> allReports = WaterReportManager.myWaterReports.getAllReports();
@@ -64,10 +61,32 @@ public class HistoryGraph {
 
     /**
      * Gets a set of a all the points in this HistoryGraph that can be used to generate the graph in the UI
-     * @returns a set of a all the points in this HistoryGraph encoded as Map.Entry<Integer, Double>
+     * @return a set of a all the points in this HistoryGraph encoded as Map.Entry<Integer, Double>
      */
     public Set<Map.Entry<Integer, Double>> getPoints() {
         return points.entrySet();
+    }
+
+    /**
+     * @return the latitude of this HistoryGraph
+     */
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    /**
+     * @return the longitude of this HistoryGraph
+     */
+    public double getLongitude() {
+        return longitude;
+    }
+
+    /**
+     * @return the year of this HistoryGraph
+     */
+    public int getYear() {
+        return year;
     }
 
 }

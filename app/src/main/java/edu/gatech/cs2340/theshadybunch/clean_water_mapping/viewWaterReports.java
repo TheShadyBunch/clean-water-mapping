@@ -38,8 +38,8 @@ public class viewWaterReports extends AppCompatActivity {
             report_list.append("\n");
         }
         /**Returns user to Main Page**/
-        Button mReturntoMain = (Button) findViewById(R.id.return_to_main);
-        mReturntoMain.setOnClickListener(new View.OnClickListener() {
+        Button mReturnToMain = (Button) findViewById(R.id.return_to_main);
+        mReturnToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), MainPageActivity.class);

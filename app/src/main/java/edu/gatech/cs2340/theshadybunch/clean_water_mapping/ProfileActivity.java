@@ -25,11 +25,11 @@ public class ProfileActivity extends AppCompatActivity {
     private EditText etEmail;
     private EditText etAddress;
     private EditText etPassword;
-    private Person current = Person.getCurrentPerson();
-    private String name = current.getName();
-    private String email = current.getEmail();
-    private String address = current.getAddress();
-    private String password = current.getPassword();
+    private final Person current = Person.getCurrentPerson();
+    private final String name = current.getName();
+    private final String email = current.getEmail();
+    private final String address = current.getAddress();
+    private final String password = current.getPassword();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +53,7 @@ public class ProfileActivity extends AppCompatActivity {
         mSaveChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!validChanges()) {
+                if (invalidChanges()) {
                     mBuilder.setTitle("Error invalid inputs");
                     mBuilder.setMessage("Changes cannot be accepted until all fields have valid values");
                     mBuilder.show();
@@ -112,7 +112,7 @@ public class ProfileActivity extends AppCompatActivity {
      * @param email the email the user is inputting
      * @return true if the email is valid, false if it is not
      */
-    public boolean validEmail(String email)
+    private boolean validEmail(String email)
     {
         Pattern pattern;
         Matcher matcher;
@@ -126,8 +126,8 @@ public class ProfileActivity extends AppCompatActivity {
      * Checks to make sure all the information currently entered is valid
      * @return true if they are valid, false if not
      */
-    private boolean validChanges() {
-        return (validEmail(etEmail.getText().toString()) && (etAddress.getText() != null)
+    private boolean invalidChanges() {
+        return !(validEmail(etEmail.getText().toString()) && (etAddress.getText() != null)
                 && (!etAddress.getText().toString().equals(""))
                 && (etPassword.getText().toString().length() >= 5));
 

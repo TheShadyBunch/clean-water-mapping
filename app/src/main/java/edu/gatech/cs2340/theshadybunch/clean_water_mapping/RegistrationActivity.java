@@ -22,8 +22,6 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText ETemail;
     private EditText ETaddress;
     private EditText ETpassword;
-    private Button register_button;
-    private Button cancel_button;
     private Spinner user_type_spinner;
     private DatabaseReference mDatabase;
 
@@ -40,12 +38,12 @@ public class RegistrationActivity extends AppCompatActivity {
         ETemail = (EditText) findViewById(R.id.ETemail);
         ETaddress = (EditText) findViewById(R.id.ETaddress);
         ETpassword = (EditText) findViewById(R.id.ETpassword);
-        register_button = (Button) findViewById(R.id.register_button);
-        cancel_button = (Button) findViewById(R.id.cancel_button);
+        Button register_button = (Button) findViewById(R.id.register_button);
+        Button cancel_button = (Button) findViewById(R.id.cancel_button);
         user_type_spinner = (Spinner) findViewById(R.id.user_type_spinner);
 
         ArrayAdapter<edu.gatech.cs2340.theshadybunch.clean_water_mapping.UserTypes> adapter =
-                new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, UserTypes.values());
+                new ArrayAdapter<edu.gatech.cs2340.theshadybunch.clean_water_mapping.UserTypes>(this, android.R.layout.simple_spinner_item, UserTypes.values());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         user_type_spinner.setAdapter(adapter);
 
@@ -97,7 +95,7 @@ public class RegistrationActivity extends AppCompatActivity {
         UserTypes userType = (UserTypes)user_type_spinner.getSelectedItem();
 
         /*TODO DELETE: No longer necessary because of hints*/
-//        //make sure the user has changed the prefilled text boxes
+//        //make sure the user has changed the pre-filled text boxes
 //        if (name.equals("Name") || email.equals("Email") || address.equals("Home Address")
 //                || password.equals("Password")) {
 //            return false;

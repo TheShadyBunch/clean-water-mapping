@@ -46,8 +46,6 @@ import static edu.gatech.cs2340.theshadybunch.clean_water_mapping.Person.setCurr
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
-    private DatabaseReference mDatabase;
-
     /**
      * Id to identity READ_CONTACTS permission request.
      */
@@ -70,7 +68,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
-    private Button mRegisterButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +75,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         setContentView(R.layout.activity_login);
 
         //Initialize database
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        //DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
@@ -108,7 +105,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
-        mRegisterButton = (Button) findViewById(R.id.register_new_user_button);
+        Button mRegisterButton = (Button) findViewById(R.id.register_new_user_button);
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -159,18 +156,20 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         return false;
     }
 
-    /**
-     * Callback received when a permissions request has been completed.
-     */
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        if (requestCode == REQUEST_READ_CONTACTS) {
-            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                populateAutoComplete();
-            }
-        }
-    }
+// --Commented out by Inspection START (4/3/2017 2:04 PM):
+//    /**
+//     * Callback received when a permissions request has been completed.
+//     */
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+//                                           @NonNull int[] grantResults) {
+//        if (requestCode == REQUEST_READ_CONTACTS) {
+//            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                populateAutoComplete();
+//            }
+//        }
+//    }
+// --Commented out by Inspection STOP (4/3/2017 2:04 PM)
 
 
     /**
@@ -200,7 +199,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         // Check for a valid password.
         if (TextUtils.isEmpty(password)
                 || password.equals("")
-                || password == null
                 || password.length() < 4
                 || !pass) {
             System.out.println("Password: " + password);
@@ -336,7 +334,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
         //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
         ArrayAdapter<String> adapter =
-                new ArrayAdapter<>(LoginActivity.this,
+                new ArrayAdapter<String>(LoginActivity.this,
                         android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
 
         mEmailView.setAdapter(adapter);
@@ -350,7 +348,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         };
 
         int ADDRESS = 0;
-        int IS_PRIMARY = 1;
+        // --Commented out by Inspection (4/3/2017 2:04 PM):int IS_PRIMARY = 1;
     }
 
     /**
@@ -359,18 +357,20 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
-        private final String mEmail;
-        private final String mPassword;
+        // --Commented out by Inspection (4/3/2017 2:06 PM):private final String mEmail;
+        // --Commented out by Inspection (4/3/2017 2:06 PM):private final String mPassword;
 
-        /**
-         * Creates a new UserLoginTask
-         * @param email the email of the user
-         * @param password the password of the user
-         */
-        UserLoginTask(String email, String password) {
-            mEmail = email;
-            mPassword = password;
-        }
+// --Commented out by Inspection START (4/3/2017 2:04 PM):
+//        /**
+//         * Creates a new UserLoginTask
+//         * @param email the email of the user
+//         * @param password the password of the user
+//         */
+//        UserLoginTask(String email, String password) {
+//            mEmail = email;
+//            mPassword = password;
+//        }
+// --Commented out by Inspection STOP (4/3/2017 2:04 PM)
 
         @Override
         protected Boolean doInBackground(Void... params) {

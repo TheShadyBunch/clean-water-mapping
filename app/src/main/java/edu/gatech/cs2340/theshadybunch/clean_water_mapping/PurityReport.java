@@ -9,9 +9,9 @@ import java.util.Date;
 
 //TODO: Find a way to actually create a PurityReport
 public class PurityReport extends WaterReport {
-    protected double virusPPM;
-    protected double contaminantPPM;
-    protected OverallWaterCondition overallWaterCondition;
+    private final double virusPPM;
+    private final double contaminantPPM;
+    private final OverallWaterCondition overallWaterCondition;
 
     /**
      * Creates a new PurityReport

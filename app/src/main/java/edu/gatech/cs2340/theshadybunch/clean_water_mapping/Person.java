@@ -5,7 +5,7 @@ import android.widget.EditText;
 import java.util.List;
 
 /**
- * Created by kvict on 2/24/2017.
+ * Created by Kayla Oates on 2/24/2017.
  */
 
 public abstract class Person {
@@ -13,10 +13,7 @@ public abstract class Person {
     private String email;
     private String address;
     private String password;
-    private String id;
-    private boolean isBanned = false;
-    private boolean isBlocked = false;
-    private List myReports;
+    private final String id;
     private static Person currentPerson;
 
     /**
@@ -26,12 +23,14 @@ public abstract class Person {
         return currentPerson;
     }
 
-    /**
-     * @return true if someone is currently logged into the system
-     */
-    public static boolean isLoggedIn() {
-        return currentPerson != null;
-    }
+// --Commented out by Inspection START (4/3/2017 2:37 PM):
+//    /**
+//     * @return true if someone is currently logged into the system
+//     */
+//    public static boolean isLoggedIn() {
+//        return currentPerson != null;
+//    }
+// --Commented out by Inspection STOP (4/3/2017 2:37 PM)
 
     /**
      * Sets the currently logged in user to the given person
@@ -49,7 +48,7 @@ public abstract class Person {
      * @param password the person's password
      * @param id the person's user id
      */
-    public Person(String name, String email, String address, String password, String id) {
+    Person(String name, String email, String address, String password, String id) {
         this.name = name;
         this.email = email;
         this.address = address;
@@ -88,14 +87,22 @@ public abstract class Person {
      */
     public String getPassword() {
         return password;
-    }
 
     /**
-     * @return the person's user id
+     * @return the person's ID
      */
     public String getId() {
         return id;
     }
+
+    // --Commented out by Inspection START (4/3/2017 2:37 PM):
+//    /**
+//     * @return the person's user id
+//     */
+//    public String getId() {
+//        return id;
+//    }
+// --Commented out by Inspection STOP (4/3/2017 2:37 PM)
 
     /**
      * Sets the user's name

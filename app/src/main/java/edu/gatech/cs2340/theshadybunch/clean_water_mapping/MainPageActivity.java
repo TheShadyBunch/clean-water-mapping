@@ -1,23 +1,10 @@
 package edu.gatech.cs2340.theshadybunch.clean_water_mapping;
 
 import android.content.Intent;
-import android.icu.text.DateFormat;
-import android.icu.text.SimpleDateFormat;
-import android.icu.util.Calendar;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
 
-import java.util.Date;
-
-import static edu.gatech.cs2340.theshadybunch.clean_water_mapping.R.id.spinner_water_type;
 
 //TODO: Figure out why the main page is not populating
 public class MainPageActivity extends AppCompatActivity {

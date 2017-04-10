@@ -11,7 +11,7 @@ public enum WaterCondition {
     @Override
     public String toString(){
         if (this == WASTE) {
-            return "Wastewater";
+            return "Waste water";
         } else if (this == TREATABLE_CLEAR) {
             return "Clear treatable water";
         } else if (this == TREATABLE_MUDDY) {

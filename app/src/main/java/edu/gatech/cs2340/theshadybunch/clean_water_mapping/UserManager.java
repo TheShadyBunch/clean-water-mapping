@@ -3,7 +3,7 @@ package edu.gatech.cs2340.theshadybunch.clean_water_mapping;
 import java.util.HashMap;
 
 /**
- * Created by secre on 2/24/2017.
+ * Created by Theresa Mayo on 2/24/2017.
  */
 
 public class UserManager {
@@ -16,7 +16,7 @@ public class UserManager {
     //this indicates the User currently logged in to the system
     //if no one is logged in it holds null
 
-    private HashMap<String, edu.gatech.cs2340.theshadybunch.clean_water_mapping.Person> users = new HashMap<>();
+    private final HashMap<String, edu.gatech.cs2340.theshadybunch.clean_water_mapping.Person> users = new HashMap<>();
 
     /**
      * Checks to see if the UserManager contains a user with this email

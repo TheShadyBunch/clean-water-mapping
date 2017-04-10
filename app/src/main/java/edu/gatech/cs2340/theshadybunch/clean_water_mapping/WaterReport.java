@@ -8,15 +8,15 @@ import java.util.Date;
  */
 //TODO: Maybe we want to add PurityReport's variables to this, and allow them to be null?
 public class WaterReport {
-    protected Person reporter;
-    protected Date timeReported;
+    private final Person reporter;
+    private final Date timeReported;
     //when creating a new water report, use the java.util.Date.Date() method
     //which will create a new date object storing the current date/time
-    protected double latitude;
-    protected double longitude;
-    protected WaterType waterType;
-    protected WaterCondition waterCondition;
-    protected int reportID;
+    private final double latitude;
+    private final double longitude;
+    private final WaterType waterType;
+    private final WaterCondition waterCondition;
+    int reportID;
 
     /**
      * Creates a new WaterReport

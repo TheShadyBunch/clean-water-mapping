@@ -20,8 +20,8 @@ import java.util.Date;
 public class NewWaterReportActivity extends AppCompatActivity {
     private EditText etLatitude;
     private EditText etLongitude;
-    private EditText etWaterType;
-    private EditText etWaterCondition;
+    // --Commented out by Inspection (4/3/2017 2:34 PM):private EditText etWaterType;
+    // --Commented out by Inspection (4/3/2017 2:35 PM):private EditText etWaterCondition;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,11 +40,11 @@ public class NewWaterReportActivity extends AppCompatActivity {
         final Spinner spinner_water_type = (Spinner) findViewById(R.id.spinner_water_type);
         final Spinner spinner_water_condition = (Spinner) findViewById(R.id.spinner_water_condition);
         ArrayAdapter<WaterType> adapt1 =
-                new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, WaterType.values());
+                new ArrayAdapter<WaterType>(this, android.R.layout.simple_spinner_item, WaterType.values());
         adapt1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_water_type.setAdapter(adapt1);
         ArrayAdapter<edu.gatech.cs2340.theshadybunch.clean_water_mapping.WaterCondition> adapt2 =
-                new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, WaterCondition.values());
+                new ArrayAdapter<edu.gatech.cs2340.theshadybunch.clean_water_mapping.WaterCondition>(this, android.R.layout.simple_spinner_item, WaterCondition.values());
         adapt1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_water_condition.setAdapter(adapt2);
         final AlertDialog.Builder mBuilder = new AlertDialog.Builder(this);
@@ -55,17 +55,17 @@ public class NewWaterReportActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Person reporter = Person.getCurrentPerson();
-                EditText etLatitude = (EditText) findViewById(R.id.latitude);
-                EditText etLongitude = (EditText) findViewById(R.id.longitude);
+                etLatitude = (EditText) findViewById(R.id.latitude);
+                etLongitude = (EditText) findViewById(R.id.longitude);
                 WaterType waterType = (WaterType)spinner_water_type.getSelectedItem();
                 WaterCondition waterCondition = (WaterCondition)spinner_water_condition.getSelectedItem();
                 Date timeReported = new Date();
                 double latitude = Double.parseDouble(etLatitude.getText().toString());
                 double longitude = Double.parseDouble(etLongitude.getText().toString());
                 /**Makes sure something is entered for latitude and longitude before submission**/
-                if(etLatitude == null || etLongitude == null) {
+                if(etLatitude.getText().toString().equals("") || etLongitude.getText().toString().equals("")) {
                     mBuilder.setTitle("Error Invalid Inputs");
-                    mBuilder.setMessage("Latitude and Longitude cannot be null!");
+                    mBuilder.setMessage("Latitude and Longitude cannot be empty!");
                     mBuilder.show();
                 } else {
                     WaterReport report = new WaterReport(reporter, timeReported, latitude, longitude,
