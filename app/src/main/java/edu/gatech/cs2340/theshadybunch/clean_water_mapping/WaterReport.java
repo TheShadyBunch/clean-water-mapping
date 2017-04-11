@@ -101,6 +101,10 @@ public class WaterReport {
     public PurityReport getPurityReport() {
         return purityReport;
     }
+    
+    public void setPurityReport(PurityReport nPR) {
+        this.purityReport = nPR;
+    }
 
     @Override
     public String toString() {
