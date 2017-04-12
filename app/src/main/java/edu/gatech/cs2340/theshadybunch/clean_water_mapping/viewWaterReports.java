@@ -20,23 +20,12 @@ public class viewWaterReports extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_view_water_reports);
-        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linlay);
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        TextView report_list = (TextView)findViewById(R.id.water_reports_list);
         Collection<WaterReport> reports = WaterReportManager.myWaterReports.getAllReports();
         for(WaterReport report : reports) {
-            final TextView textView = new TextView(this);
-            textView.setId(report.getReportID());
-            textView.setText(report.toString());
-            linearLayout.addView(textView, lp);
-            if(currentPerson instanceof Manager || currentPerson instanceof  Worker) {
-                textView.setOnClickListener(new View.OnClickListener(){
-                    public void onClick(View v){
-                        setCurrentWaterReport(WaterReportManager.myWaterReports.getReport(textView.getId()));
-                        Intent intent = new Intent(getApplicationContext(), newPurityReport.class);
-                        startActivity(intent);
-                    }
-                });
-            }
+            report_list.append(report.toString());
+            report_list.append("\n");
+
         }
         Button mReturnToMain = (Button) findViewById(R.id.main_return);
         mReturnToMain.setText(getString(R.string.return_to_main));
@@ -64,8 +53,7 @@ public class viewWaterReports extends AppCompatActivity {
 
 
         //for(WaterReport report : reports){
-          //  report_list.append(report.toString());
-            //report_list.append("\n");
+
         //}
 
         //report_list.setOnClickListener(new View.OnClickListener(){

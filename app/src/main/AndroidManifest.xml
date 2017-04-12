@@ -90,6 +90,14 @@
         <activity
             android:name=".newPurityReport"
             android:label="@string/title_activity_new_purity_report"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".HistoryGraphActivity"
+            android:label="@string/title_activity_history_graph"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".GraphActivity"
+            android:label="@string/title_activity_graph"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

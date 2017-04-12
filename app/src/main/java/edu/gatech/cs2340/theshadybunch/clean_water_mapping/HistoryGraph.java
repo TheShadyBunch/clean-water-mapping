@@ -1,8 +1,11 @@
 package edu.gatech.cs2340.theshadybunch.clean_water_mapping;
 
+import com.github.mikephil.charting.data.Entry;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -10,13 +13,16 @@ import java.util.Set;
  * Created by on 3/26/2017.
  * @author Theresa Mayo
  * @version 1.0
- * A graph that shows historic trends in virus or contaminant PPM at a particular watr source
+ * A graph that shows historic trends in virus or contaminant PPM at a particular water source
  */
 
 class HistoryGraph {
     private final double latitude;
     private final double longitude;
     private final int year;
+    private final List<Entry> entries = new ArrayList<Entry>();
+    public static HistoryGraph currentGraph = null;
+
 
     private final HashMap<Integer, Double> points = new HashMap<Integer, Double>();
 
@@ -32,13 +38,13 @@ class HistoryGraph {
         this.longitude = longitude;
         this.year = year;
 
-        Collection<WaterReport> allReports = WaterReportManager.myWaterReports.getAllReports();
+        Collection<PurityReport> allReports = PurityReportManager.myPurityReports.getAllPurityReports();
         ArrayList<PurityReport> purityReports = new ArrayList<PurityReport>();
-        for (WaterReport waterReport : allReports) {
-            if (waterReport.getLatitude() == this.latitude && waterReport.getLongitude() == this.longitude
-                    && waterReport.getTimeReported().getYear() == (year - 1900)
-                    && waterReport instanceof PurityReport) {
-                purityReports.add((PurityReport) waterReport);
+        for (PurityReport purityReport : allReports) {
+            if (purityReport.getLatitude() == this.latitude &&
+                    purityReport.getLongitude() == this.longitude
+                    && purityReport.getTimeReported().getYear() == (year - 1900)) {
+                purityReports.add((PurityReport) purityReport);
             }
         }
 
@@ -57,7 +63,8 @@ class HistoryGraph {
                     }
                 }
             }
-            points.put(month, reportSum / numReports);
+            //points.put(month, reportSum / numReports);
+            entries.add(new Entry((float)month,(float)reportSum/numReports));
         }
     }
 
@@ -90,5 +97,30 @@ class HistoryGraph {
     public int getYear() {
         return year;
     }
+
+    /**
+     *
+     * @return the list of entries for this HistoryGraph
+     */
+    public List<Entry> getEntries(){
+        return entries;
+    }
+
+    /**
+     *
+     * @param graph the history graph to set to currentGraph
+     */
+    public static void setCurrentGraph(HistoryGraph graph) {
+        currentGraph = graph;
+    }
+
+    /**
+     *
+     * @return the current HistoryGraph to be displayed
+     */
+    public static HistoryGraph getCurrentGraph(){
+        return currentGraph;
+    }
+
 
 }

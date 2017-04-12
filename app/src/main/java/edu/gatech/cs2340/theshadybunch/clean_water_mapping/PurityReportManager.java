@@ -14,6 +14,7 @@ public class PurityReportManager {
 
     private final HashMap<Integer, PurityReport> purityReports = new HashMap<>();
 
+
     /**
      * adds the purity report to this PurityReportManager
      * @param purityReport the purity report to be added

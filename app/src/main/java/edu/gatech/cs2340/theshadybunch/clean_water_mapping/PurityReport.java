@@ -9,11 +9,11 @@ import java.util.Date;
  */
 
 //TODO: Find a way to actually create a PurityReport
-public class PurityReport extends WaterReport {
+public class PurityReport  {
     private final int reportID;
     private final double virusPPM;
     private final double contaminantPPM;
-    protected WaterReport parent;
+    //protected WaterReport parent;
     private final OverallWaterCondition overallWaterCondition;
     private final Person reporter;
     private final double latitude;
@@ -30,9 +30,9 @@ public class PurityReport extends WaterReport {
      * @param contaminantPPM The parts per million of contaminant
      * @param overallWaterCondition The overall condition of the water
      */
-    public PurityReport(WaterReport parent, Person reporter, Date timeReported, double latitude, double longitude,
+    public PurityReport(Person reporter, Date timeReported, double latitude, double longitude,
                         OverallWaterCondition overallWaterCondition, double virusPPM, double contaminantPPM) {
-        super(reporter, timeReported, latitude, longitude, parent.getWaterType(), parent.getWaterCondition());
+        //super(reporter, timeReported, latitude, longitude, parent.getWaterType(), parent.getWaterCondition());
         this.reporter = reporter;
         this.timeReported = timeReported;
         this.latitude = latitude;
@@ -41,7 +41,7 @@ public class PurityReport extends WaterReport {
         this.contaminantPPM = contaminantPPM;
         this.overallWaterCondition = overallWaterCondition;
 
-        this.reportID = 17 * parent.hashCode() * (int) virusPPM
+        this.reportID = 17 * reporter.hashCode() * (int) virusPPM
                 * (int) contaminantPPM * overallWaterCondition.hashCode();
     }
 
@@ -70,6 +70,12 @@ public class PurityReport extends WaterReport {
     public int getReportID() {
         return reportID;
     }
+
+    public Date getTimeReported() {return timeReported;}
+
+    public double getLatitude() {return latitude;}
+
+    public double getLongitude() {return longitude;}
 
     @Override
     public String toString() {

@@ -80,16 +80,36 @@ public class MainPageActivity extends AppCompatActivity {
         });
 
         Button mViewPurityReportsButton = (Button) findViewById(R.id.view_purity_reports);
-        if (current instanceof Manager ) {
-            mViewPurityReportsButton.setVisibility(View.VISIBLE);
-
-        }
         mViewPurityReportsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), viewPurityReports.class));
             }
         });
+
+        Button mNewPurityReportButton = (Button) findViewById(R.id.new_purity_report_button);
+        mNewPurityReportButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), newPurityReport.class));
+            }
+        });
+
+        Button mHistoryGraphButton = (Button)findViewById(R.id.history_graph_button);
+        mHistoryGraphButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), HistoryGraphActivity.class));
+            }
+        });
+
+        if (current instanceof Manager) {
+            mViewPurityReportsButton.setVisibility(View.VISIBLE);
+            mNewPurityReportButton.setVisibility(View.VISIBLE);
+            mHistoryGraphButton.setVisibility(View.VISIBLE);
+
+
+        }
 
 
 

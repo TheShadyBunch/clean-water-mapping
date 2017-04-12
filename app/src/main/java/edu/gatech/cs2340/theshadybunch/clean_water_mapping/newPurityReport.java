@@ -17,7 +17,7 @@ import android.widget.Toast;
 import java.util.Date;
 
 public class newPurityReport extends AppCompatActivity {
-    private final WaterReport parentReport = WaterReport.getCurrentWaterReport();
+   // private final WaterReport parentReport = WaterReport.getCurrentWaterReport();
 
 
 
@@ -67,11 +67,11 @@ public class newPurityReport extends AppCompatActivity {
                     mBuilder.setMessage("All values must be filled");
                     mBuilder.show();
                 } else {
-                    PurityReport report = new PurityReport(parentReport, reporter, date, latitude, longitude, condition, virus, c);
+                    PurityReport report = new PurityReport(reporter, date, latitude, longitude, condition, virus, c);
                     PurityReportManager.myPurityReports.addPurityReport(report);
                     Toast.makeText(newPurityReport.this, "Report Submitted",
                             Toast.LENGTH_SHORT).show();
-                    Intent x = new Intent(getApplicationContext(), viewWaterReports.class);
+                    Intent x = new Intent(getApplicationContext(), MainPageActivity.class);
                     startActivity(x);
                 }
             }
@@ -83,7 +83,7 @@ public class newPurityReport extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(newPurityReport.this, "Report Canceled",
                         Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(getApplicationContext(), viewWaterReports.class);
+                Intent i = new Intent(getApplicationContext(), MainPageActivity.class);
                 startActivity(i);
 
             }

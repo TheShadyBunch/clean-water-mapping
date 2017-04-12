@@ -16,7 +16,7 @@
     <Button
         android:text="Logout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="36dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:id="@+id/logout_button" />
@@ -42,43 +42,67 @@
         android:layout_gravity="bottom|center_horizontal"
         android:layout_marginTop="25dp"
         android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:text="View Map"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="36dp"
         android:layout_marginTop="19dp"
         android:id="@+id/view_map_button"
         android:layout_below="@+id/new_water_report"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:text="New Water Report"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="36dp"
         android:layout_marginTop="13dp"
         android:id="@+id/new_water_report"
         android:layout_below="@+id/edit_profile_button"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:text="View All Water Reports"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="36dp"
         android:layout_below="@+id/view_map_button"
         android:layout_alignEnd="@+id/view_map_button"
         android:layout_marginTop="15dp"
-        android:id="@+id/view_water_reports" />
+        android:id="@+id/view_water_reports"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/view_purity_reports"
         android:visibility="invisible"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="36dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/view_water_reports"
         android:layout_marginTop="10dp"
         android:text="View Purity Reports"
-        android:layout_toStartOf="@+id/textView" />
+        android:layout_toStartOf="@+id/textView"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/history_graph_button"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_below="@+id/view_purity_reports"
+        android:visibility="invisible"
+        android:text="View History Graph"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/new_purity_report_button"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/history_graph_button"
+        android:text="New Purity Report"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
