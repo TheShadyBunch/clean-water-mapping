@@ -1,39 +1,21 @@
+
 package edu.gatech.cs2340.theshadybunch.clean_water_mapping;
 
-import android.content.Context;
 import android.content.Intent;
-import android.icu.text.DateFormat;
-import android.icu.text.SimpleDateFormat;
-import android.icu.util.Calendar;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.JsonWriter;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.util.Date;
 import java.util.HashMap;
 import java.io.OutputStream;
 
-import static edu.gatech.cs2340.theshadybunch.clean_water_mapping.R.id.spinner_water_type;
-
-
-//TODO: Figure out why the main page is not populating
 public class MainPageActivity extends AppCompatActivity {
-    private Person current = Person.getCurrentPerson();
+    private final Person current = Person.getCurrentPerson();
 
     private HashMap<String, Person> userList;
     private UserManager userManager;
@@ -134,6 +116,7 @@ public class MainPageActivity extends AppCompatActivity {
         if (!(current instanceof Manager)) {
             mViewPurityReportsButton.setVisibility(View.GONE);
         }
+
         mViewPurityReportsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -159,21 +142,6 @@ public class MainPageActivity extends AppCompatActivity {
     }
 
     public void saveUsers() throws IOException {
-        //TODO DELETE
-//        final AlertDialog.Builder a = new AlertDialog.Builder(this);
-//        a.setMessage("saving data...");
-//        a.show();
-//        ObjectMapper mapper = new ObjectMapper();
-//        String filename = "users.json";
-//        FileOutputStream outputStream;
-//        try {
-//            String map = userManager.toJSON();
-//            outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
-//            outputStream.write(map.getBytes());
-//            outputStream.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
         FileOutputStream fos = openFileOutput("users.json", MODE_PRIVATE);
         writeJsonStream(fos);
     }

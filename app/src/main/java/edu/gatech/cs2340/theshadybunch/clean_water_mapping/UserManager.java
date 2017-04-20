@@ -6,15 +6,14 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- * Created by Theresa Mayo on 2/24/2017.
- * Modified by James Johnson on 4/9/2017.
+ * Created on 2/24/2017.
+ * @author Theresa Mayo
+ * @author James Johnson
+ * @version 1.0
+ * Class to keep track of all the users in the system.
  */
 
 public class UserManager {
-
-
-    //public static final UserManager myUserManager = new UserManager();
-    //single UserManager that holds all the users in the system
 
     public static Person currentUser = null;
     //this indicates the User currently logged in to the system
@@ -81,23 +80,6 @@ public class UserManager {
         ObjectMapper mapper = new ObjectMapper();
         String jsonFromMap = mapper.writeValueAsString(users);
         System.out.println(jsonFromMap);
-//        if(users == null) {
-//            return "FAIL";
-//        }
-//        String str = "{\n" +
-//                "\"users\": [";
-//        for(String email : users.keySet()) {
-//            str += "\n{\n";
-//            str += ("\"name\": " + "\"" + users.get(email).getName() + "\",\n");
-//            str += ("\"email\": " + "\"" + users.get(email).getEmail() + "\",\n");
-//            str += ("\"address\": " + "\"" + users.get(email).getAddress() + "\",\n");
-//            str += ("\"password\": " + "\"" + users.get(email).getPassword() + "\",\n");
-//            str += ("\"usertype\": " + "\"" + users.get(email).getUserType().toString() + "\",\n");
-//            str += "\n},";
-//        }
-//        str = str.substring(0, str.length() - 1);
-//        str += "\n]\n}";
-
         return jsonFromMap;
     }
 }

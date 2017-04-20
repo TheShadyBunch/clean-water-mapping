@@ -11,9 +11,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 import java.util.HashMap;
 
 import static edu.gatech.cs2340.theshadybunch.clean_water_mapping.Person.setCurrentPerson;
@@ -62,6 +59,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         ArrayAdapter<UserTypes> adapter =
                 new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, UserTypes.values());
+
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sUserType.setAdapter(adapter);
 

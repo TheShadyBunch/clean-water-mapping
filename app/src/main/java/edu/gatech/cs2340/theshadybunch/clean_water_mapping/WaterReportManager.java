@@ -13,7 +13,7 @@ public class WaterReportManager {
     //single instance used by the whole app to keep track of water reports
     public static final WaterReportManager myWaterReports = new WaterReportManager();
 
-    private HashMap<Integer, WaterReport> waterReports = new HashMap<>();
+    private final HashMap<Integer, WaterReport> waterReports = new HashMap<>();
     public static WaterReport currentWaterReport;
 
     /**

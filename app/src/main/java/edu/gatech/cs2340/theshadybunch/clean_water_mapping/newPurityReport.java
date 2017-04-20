@@ -17,11 +17,7 @@ import android.widget.Toast;
 import java.util.Date;
 
 public class newPurityReport extends AppCompatActivity {
-    private EditText etLatitude;
-    private EditText etLongitude;
-    private EditText etVirusPPM;
-    private EditText etCPPM;
-    private WaterReport parentReport = WaterReport.getCurrentWaterReport();
+   // private final WaterReport parentReport = WaterReport.getCurrentWaterReport();
 
 
 
@@ -60,35 +56,34 @@ public class newPurityReport extends AppCompatActivity {
                 EditText etVirusPPM = (EditText) findViewById(R.id.virus_ppm);
                 EditText etCppm = (EditText) findViewById(R.id.c_ppm);
                 OverallWaterCondition condition = (OverallWaterCondition)overall_condition.getSelectedItem();
-                Date timeReported = new Date();
                 double latitude = Double.parseDouble(etLatitude.getText().toString());
                 double longitude = Double.parseDouble(etLongitude.getText().toString());
                 double virus = Double.parseDouble(etVirusPPM.getText().toString());
                 double c = Double.parseDouble(etCppm.getText().toString());
                 Date date = new Date();
-                /**Makes sure something is entered for latitude and longitude before submission**/
+                /*Makes sure something is entered for latitude and longitude before submission**/
                 if(etLatitude == null || etLongitude == null || etCppm == null || etVirusPPM == null) {
                     mBuilder.setTitle("Error Invalid Inputs");
                     mBuilder.setMessage("All values must be filled");
                     mBuilder.show();
                 } else {
-                    PurityReport report = new PurityReport(parentReport, reporter, date, latitude, longitude, condition, virus, c);
+                    PurityReport report = new PurityReport(reporter, date, latitude, longitude, condition, virus, c);
                     PurityReportManager.myPurityReports.addPurityReport(report);
                     Toast.makeText(newPurityReport.this, "Report Submitted",
                             Toast.LENGTH_SHORT).show();
-                    Intent x = new Intent(getApplicationContext(), viewWaterReports.class);
+                    Intent x = new Intent(getApplicationContext(), MainPageActivity.class);
                     startActivity(x);
                 }
             }
         });
-        /**Cancels reports and redirects back to Main Activity**/
+        /*Cancels reports and redirects back to Main Activity**/
         Button mCancel = (Button) findViewById(R.id.cancel_purity);
         mCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(newPurityReport.this, "Report Canceled",
                         Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(getApplicationContext(), viewWaterReports.class);
+                Intent i = new Intent(getApplicationContext(), MainPageActivity.class);
                 startActivity(i);
 
             }

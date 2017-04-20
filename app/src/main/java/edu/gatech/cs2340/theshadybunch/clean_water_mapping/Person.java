@@ -9,7 +9,10 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by kvict on 2/24/2017.
+ * Created on 2/24/2017.
+ * @author Kayla Oates
+ * @version 1.0
+ * A model class for a person using the system.
  */
 
 public abstract class Person implements Serializable {
@@ -17,7 +20,6 @@ public abstract class Person implements Serializable {
     private String email;
     private String address;
     private String password;
-
     private UserTypes userType;
     private boolean isBanned = false;
     private boolean isBlocked = false;
@@ -33,12 +35,14 @@ public abstract class Person implements Serializable {
         return currentPerson;
     }
 
-    /**
-     * @return true if someone is currently logged into the system
-     */
-    public static boolean isLoggedIn() {
-        return currentPerson != null;
-    }
+// --Commented out by Inspection START (4/3/2017 2:37 PM):
+//    /**
+//     * @return true if someone is currently logged into the system
+//     */
+//    public static boolean isLoggedIn() {
+//        return currentPerson != null;
+//    }
+// --Commented out by Inspection STOP (4/3/2017 2:37 PM)
 
     /**
      * Sets the currently logged in user to the given person

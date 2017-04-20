@@ -14,8 +14,10 @@ public enum OverallWaterCondition {
             return "Safe water";
         } else if (this == TREATABLE) {
             return "Treatable water";
-        } else {
+        } else if (this == UNSAFE) {
             return "Unsafe water";
+        } else {
+            return "ERROR--Invalid Water Condition";
         }
         //TODO: Maybe change the above else to an else if, and create an else that reports an error?
     }

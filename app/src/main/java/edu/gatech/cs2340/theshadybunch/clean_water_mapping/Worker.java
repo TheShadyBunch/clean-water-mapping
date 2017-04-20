@@ -1,10 +1,13 @@
 package edu.gatech.cs2340.theshadybunch.clean_water_mapping;
 
 /**
- * Created by kvict on 2/24/2017.
+ * Created on 2/24/2017.
+ * @author Kayla Oates
+ * @version 1.0
+ * Worker is a user that can submit purity reports in our system
  */
 
-public class Worker extends Person {
+class Worker extends Person {
 
     /**
      * creates a new worker

@@ -22,19 +22,22 @@
         android:layout_marginStart="106dp"
         android:id="@+id/textView6" />
 
-    <TextView
-        android:text=""
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/water_reports_list"
-        android:layout_below="@+id/textView6"
-        android:layout_alignParentStart="true" />
 
     <Button
         android:text="Return to Main Page"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/water_reports_list"
+
         android:id="@+id/return_to_main" />
+
+    <TextView
+        android:id="@+id/water_reports_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/return_to_main"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView6" />
 </RelativeLayout>

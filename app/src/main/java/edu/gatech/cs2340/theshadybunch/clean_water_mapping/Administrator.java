@@ -1,10 +1,14 @@
 package edu.gatech.cs2340.theshadybunch.clean_water_mapping;
 
 /**
- * Created by kvict on 2/24/2017.
+ * Created by on 2/24/2017.
+ * @author Kayla Oates
+ * @version 1.0
+ * Administrator is a User Type that can manage other user accounts and perform administrative
+ * tasks in the system
  */
 
-public class Administrator extends Person {
+class Administrator extends Person {
 
     /**
      * creates a new Administrator
