@@ -3,6 +3,18 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LGPL2.1'
+    }
     defaultConfig {
         applicationId "edu.gatech.cs2340.theshadybunch.clean_water_mapping"
         minSdkVersion 25
@@ -30,12 +42,10 @@ dependencies {
     compile 'com.google.android.gms:play-services:10.2.0'
     compile 'com.google.android.gms:play-services-maps:10.2.0'
     compile 'com.android.support.constraint:constraint-layout:+'
+    compile 'com.fasterxml.jackson.core:jackson-core:2.9.0.pr2'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.9.0.pr2'
+
     testCompile 'junit:junit:4.12'
 }
-
-
-
-
-
 
 apply plugin: 'com.google.gms.google-services'

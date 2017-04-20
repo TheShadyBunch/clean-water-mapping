@@ -3,11 +3,14 @@ package edu.gatech.cs2340.theshadybunch.clean_water_mapping;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Environment;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
 
@@ -21,6 +24,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.JsonReader;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,12 +35,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
-import java.net.SocketPermission;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import static android.Manifest.permission.READ_CONTACTS;
 import static edu.gatech.cs2340.theshadybunch.clean_water_mapping.Person.setCurrentPerson;
@@ -46,20 +60,13 @@ import static edu.gatech.cs2340.theshadybunch.clean_water_mapping.Person.setCurr
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
-    private DatabaseReference mDatabase;
+    private UserManager userManager;
 
     /**
      * Id to identity READ_CONTACTS permission request.
      */
     private static final int REQUEST_READ_CONTACTS = 0;
 
-    /**
-     * A dummy authentication store containing known user names and passwords.
-     * TODO: remove after connecting to a real authentication system.
-     */
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world"
-    };
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
@@ -72,13 +79,25 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mLoginFormView;
     private Button mRegisterButton;
 
+    private HashMap<String, Person> userList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        userList = new HashMap<>();
 
-        //Initialize database
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        FileInputStream fis;
+        try {
+            fis = openFileInput("users.json");
+            userList = readJsonStream(fis);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        userManager = new UserManager(userList);
 
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
@@ -101,8 +120,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             @Override
             public void onClick(View view) {
                 if(attemptLogin()) {
-                    UserManager.currentUser = UserManager.myUserManager.getPerson(mEmailView.getText().toString());
+                    UserManager.currentUser = userManager.getPerson(mEmailView.getText().toString());
+                    userList = userManager.saveUsers();
                     Intent i = new Intent(getApplicationContext(), MainPageActivity.class);
+                    Bundle b = new Bundle();
+                    b.putSerializable("userList",userList);
+                    i.putExtras(b);
                     startActivity(i);
                 }
             }
@@ -112,7 +135,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                userList = userManager.saveUsers();
                 Intent i = new Intent(getApplicationContext(), RegistrationActivity.class);
+                Bundle b = new Bundle();
+                b.putSerializable("userList",userList);
+                b.putString("email", mEmailView.getText().toString());
+                b.putString("password", mPasswordView.getText().toString());
+                i.putExtras(b);
+                //new userManager instance can be formed from this userList
                 startActivity(i);
 
             }
@@ -122,6 +152,64 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mProgressView = findViewById(R.id.login_progress);
     }
 
+    public HashMap<String, Person> readJsonStream(InputStream in) throws IOException {
+        JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
+        try {
+            return read(reader);
+        } finally {
+            reader.close();
+        }
+    }
+
+    public HashMap<String, Person> read(JsonReader reader) throws IOException {
+        HashMap<String, Person> map = new HashMap<>();
+        //reader.beginObject();
+        reader.beginArray();
+        while (reader.hasNext()) {
+            Person p = readUser(reader);
+            map.put(p.getEmail(), p);
+        }
+        reader.endArray();
+        //reader.endObject();
+        return map;
+    }
+
+    public Person readUser(JsonReader reader) throws IOException {
+        String name = "";
+        String email = "";
+        String address = "";
+        String password = "";
+        String usertype = "";
+
+        reader.beginObject();
+        while (reader.hasNext()) {
+            String n = reader.nextName();
+            switch(n) {
+                case "name":
+                    name = reader.nextString();
+                    break;
+                case "email":
+                    email = reader.nextString();
+                    break;
+                case "address":
+                    address = reader.nextString();
+                    break;
+                case "password":
+                    password = reader.nextString();
+                    break;
+                case "usertype":
+                    usertype = reader.nextString();
+                    break;
+                default:
+                    reader.skipValue();
+            }
+        }
+        reader.endObject();
+        User u = new User(name, email, address, password);
+        u.setUserType(usertype);
+        return u;
+    }
+    
     /**
      * Populates the autocomplete feature
      */
@@ -235,7 +323,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
-            setCurrentPerson(UserManager.myUserManager.getPerson(email));
+            setCurrentPerson(userManager.getPerson(email));
             return true;
         }
     }
@@ -246,7 +334,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * @return true if the email is valid, false if it's not
      */
     private boolean isEmailValid(String email) {
-        return UserManager.myUserManager.containsKey(email);
+        return userManager.containsKey(email);
     }
 
     /**
@@ -256,7 +344,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * @return true if the password is correct, false if not
      */
     private boolean isPasswordValid(String email, String password) {
-        return UserManager.myUserManager.validatePassword(email, password);
+        return userManager.validatePassword(email, password);
     }
 
     /**
@@ -382,17 +470,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             } catch (InterruptedException e) {
                 return false;
             }
-
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
-                }
-            }
-
-            // TODO: register the new account here.
-            return true;
+            return userList.containsKey(mEmail) && userList.get(mEmail).getPassword().equals(mPassword);
         }
 
         @Override

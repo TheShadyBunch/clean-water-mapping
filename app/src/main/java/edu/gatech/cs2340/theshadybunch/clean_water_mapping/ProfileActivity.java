@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -31,6 +32,9 @@ public class ProfileActivity extends AppCompatActivity {
     private String address = current.getAddress();
     private String password = current.getPassword();
 
+    private HashMap<String, Person> userList;
+    private UserManager userManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +42,11 @@ public class ProfileActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        Bundle extras = getIntent().getExtras();
+        if(extras != null) {
+            userList = (HashMap<String, Person>) extras.getSerializable("userList");
+        }
+        userManager = new UserManager(userList);
 
         etName = (EditText)findViewById(R.id.name_edit);
         etName.setText(name);
@@ -66,15 +75,20 @@ public class ProfileActivity extends AppCompatActivity {
                     mConfirm.setOnClickListener(new View.OnClickListener(){
                         @Override
                         public void onClick(View view) {
-                            if (UserManager.myUserManager.validatePassword(mEmail.getText().toString(),mPassword.getText().toString())) {
+                            if (userManager.validatePassword(mEmail.getText().toString(),mPassword.getText().toString())) {
                                 current.setName(etName.getText().toString());
                                 current.setEmail(etEmail.getText().toString());
                                 current.setAddress(etAddress.getText().toString());
                                 current.setPassword(etPassword.getText().toString());
+                                userList = userManager.saveUsers();
                                 Toast.makeText(ProfileActivity.this, "Changes Accepted",
                                         Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(), MainPageActivity.class));
-
+                                userList = userManager.saveUsers();
+                                Intent i = new Intent(getApplicationContext(), MainPageActivity.class);
+                                Bundle b = new Bundle();
+                                b.putSerializable("userList",userList);
+                                i.putExtras(b);
+                                startActivity(i);
                             } else {
                                 Toast.makeText(ProfileActivity.this, "Changes not Accepted",
                                         Toast.LENGTH_SHORT).show();
@@ -84,13 +98,6 @@ public class ProfileActivity extends AppCompatActivity {
                     mBuilder.setView(mView);
                     AlertDialog dialog = mBuilder.create();
                     dialog.show();
-
-
-
-
-
-
-
                 }
 
 
@@ -101,8 +108,10 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), MainPageActivity.class);
+                Bundle b = new Bundle();
+                b.putSerializable("userList", userList);
+                i.putExtras(b);
                 startActivity(i);
-
             }
         });
     }
@@ -132,7 +141,4 @@ public class ProfileActivity extends AppCompatActivity {
                 && (etPassword.getText().toString().length() >= 5));
 
     }
-
-
 }
-

@@ -2,23 +2,29 @@ package edu.gatech.cs2340.theshadybunch.clean_water_mapping;
 
 import android.widget.EditText;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by kvict on 2/24/2017.
  */
 
-public abstract class Person {
+public abstract class Person implements Serializable {
     private String name;
     private String email;
     private String address;
     private String password;
-    private String id;
+
+    private UserTypes userType;
     private boolean isBanned = false;
     private boolean isBlocked = false;
     private List myReports;
     private static Person currentPerson;
 
+    private static final long serialVersionUID = 160518191514L;
 
     /**
      * @return the person currently logged in to the system
@@ -48,14 +54,29 @@ public abstract class Person {
      * @param email the person's email
      * @param address the person's address
      * @param password the person's password
-     * @param id the person's user id
+     * @param userType the person's userType
      */
-    public Person(String name, String email, String address, String password, String id) {
+    public Person(String name, String email, String address, String password, UserTypes userType) {
         this.name = name;
         this.email = email;
         this.address = address;
         this.password = password;
-        this.id = id;
+        this.userType = userType;
+    }
+
+    /**
+     * Creates a new person
+     * @param name the person's name
+     * @param email the person's email
+     * @param address the person's address
+     * @param password the person's password
+     */
+    public Person(String name, String email, String address, String password) {
+        this.name = name;
+        this.email = email;
+        this.address = address;
+        this.password = password;
+        this.userType = UserTypes.USER;
     }
 
     //TODO: Implement these methods?
@@ -92,11 +113,9 @@ public abstract class Person {
     }
 
     /**
-     * @return the person's user id
+     * @return the person's usertype
      */
-    public String getId() {
-        return id;
-    }
+    public UserTypes getUserType() { return userType; }
 
     /**
      * Sets the user's name
@@ -130,4 +149,55 @@ public abstract class Person {
         password = nPassword;
     }
 
+    /**
+     * Sets the user's usertype
+     * @param nUserType the user's new usertype
+     */
+    public void setUserType(UserTypes nUserType) { userType = nUserType; }
+
+    /**
+     * Sets the user's usertype
+     * @param nUserType the user's new usertype
+     */
+    public void setUserType(String nUserType) {
+        switch(nUserType) {
+            case "WORKER": setUserType(UserTypes.WORKER); break;
+            case "MANAGER": setUserType(UserTypes.MANAGER); break;
+            case "ADMINISTRATOR": setUserType(UserTypes.ADMINISTRATOR); break;
+            default: setUserType(UserTypes.USER); break;
+        }
+    }
+
+    /**
+     *
+     */
+    public String toString() {
+        return "\nName: " + name
+                + "\nEmail: " + email
+                + "\nAddress: " + address
+                + "\nPassword: " + password
+                + "\nUsertype: " + userType.toString();
+    }
+
+    /**
+     * Always treat de-serialization as a full-blown constructor, by
+     * validating the final state of the de-serialized object.
+     */
+    private void readObject(
+            ObjectInputStream aInputStream
+    ) throws ClassNotFoundException, IOException {
+        //always perform the default de-serialization first
+        aInputStream.defaultReadObject();
+    }
+
+    /**
+     * This is the default implementation of writeObject.
+     * Customise if necessary.
+     */
+    private void writeObject(
+            ObjectOutputStream aOutputStream
+    ) throws IOException {
+        //perform the default serialization for all non-transient, non-static fields
+        aOutputStream.defaultWriteObject();
+    }
 }

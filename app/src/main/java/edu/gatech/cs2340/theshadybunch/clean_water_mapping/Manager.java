@@ -12,10 +12,9 @@ public class Manager extends Person {
      * @param email the manager's email
      * @param address the manager's address
      * @param password the manager's password
-     * @param id the manager's id
      */
-    public Manager(String name, String email, String address, String password, String id) {
-        super(name, email, address, password, id);
+    public Manager(String name, String email, String address, String password) {
+        super(name, email, address, password, UserTypes.MANAGER);
     }
 
     //TODO: Implement the following methods

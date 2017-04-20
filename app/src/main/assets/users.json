@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "name": "James",
+      "email": "j@gmail.com",
+      "address": "addr1",
+      "password": "password",
+      "usertype": "USER"
+    },
+    {
+      "name": "Kayla",
+      "email": "k@gmail.com",
+      "address": "addr1",
+      "password": "password",
+      "usertype": "MANAGER"
+    },
+    {
+      "name": "Theresa",
+      "email": "t@gmail.com",
+      "address": "addr1",
+      "password": "password",
+      "usertype": "ADMINISTRATOR"
+    },
+    {
+      "name": "Josh",
+      "email": "j2@gmail.com",
+      "address": "addr1",
+      "password": "password",
+      "usertype": "WORKER"
+    }
+  ]
+}

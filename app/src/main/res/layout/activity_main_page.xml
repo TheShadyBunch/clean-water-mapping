@@ -4,35 +4,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context="edu.gatech.cs2340.theshadybunch.clean_water_mapping.MainPageActivity">
+    tools:context="edu.gatech.cs2340.theshadybunch.clean_water_mapping.newPurityReport">
 
-    <android.support.design.widget.AppBarLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="edu.gatech.cs2340.theshadybunch.clean_water_mapping.MainPageActivity">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <!-- Login progress -->
+
+        <Button
+            android:id="@+id/bProfile"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:layout_height="wrap_content"
+            android:text="Profile" />
 
-    </android.support.design.widget.AppBarLayout>
+        <Button
+            android:id="@+id/bNewWaterReport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="New Water Report" />
 
-    <include layout="@layout/content_main_page"
-        android:id="@+id/include" />
+        <Button
+            android:id="@+id/bWaterReports"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Water Reports" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email"
-        app:layout_anchor="@+id/include"
-        app:layout_anchorGravity="bottom|right"
-        android:layout_gravity="top|left" />
+        <Button
+            android:id="@+id/bMap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View Map" />
 
+        <Button
+            android:id="@+id/bPurityReports"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Purity Reports" />
 
+        <Button
+            android:id="@+id/bLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Logout" />
+
+    </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

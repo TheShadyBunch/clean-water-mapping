@@ -12,10 +12,9 @@ public class Administrator extends Person {
      * @param email the administrator's email
      * @param address the administrator's address
      * @param password the administrator's password
-     * @param id the administrator's id
      */
-    public Administrator(String name, String email, String address, String password, String id) {
-        super(name, email, address, password, id);
+    public Administrator(String name, String email, String address, String password) {
+        super(name, email, address, password, UserTypes.ADMINISTRATOR);
     }
 
     //TODO: Implement the following methods

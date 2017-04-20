@@ -9,9 +9,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 import static edu.gatech.cs2340.theshadybunch.clean_water_mapping.Person.setCurrentPerson;
 
@@ -22,37 +25,50 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText ETemail;
     private EditText ETaddress;
     private EditText ETpassword;
-    private Button register_button;
-    private Button cancel_button;
-    private Spinner user_type_spinner;
-    private DatabaseReference mDatabase;
+    private Button bRegister;
+    private Button bCancel;
+    private Spinner sUserType;
+    private HashMap<String, Person> userList;
+    private UserManager userManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+        String email = "";
+        String password = "";
 
-        //Initialize database
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        Bundle extras = getIntent().getExtras();
+        if(extras != null) {
+            userList = (HashMap<String, Person>) extras.getSerializable("userList");
+            email = extras.getString("email");
+            password = extras.getString("password");
+
+        }
+        userManager = new UserManager(userList);
+
 
         //Get references to all the UI fields
         ETname = (EditText) findViewById(R.id.ETname);
         ETemail = (EditText) findViewById(R.id.ETemail);
+        ETemail.setText(email, TextView.BufferType.EDITABLE);
         ETaddress = (EditText) findViewById(R.id.ETaddress);
         ETpassword = (EditText) findViewById(R.id.ETpassword);
-        register_button = (Button) findViewById(R.id.register_button);
-        cancel_button = (Button) findViewById(R.id.cancel_button);
-        user_type_spinner = (Spinner) findViewById(R.id.user_type_spinner);
+        ETpassword.setText(password, TextView.BufferType.EDITABLE);
 
-        ArrayAdapter<edu.gatech.cs2340.theshadybunch.clean_water_mapping.UserTypes> adapter =
+        bRegister = (Button) findViewById(R.id.bRegister);
+        bCancel = (Button) findViewById(R.id.bCancel);
+        sUserType = (Spinner) findViewById(R.id.sUserType);
+
+        ArrayAdapter<UserTypes> adapter =
                 new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, UserTypes.values());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        user_type_spinner.setAdapter(adapter);
+        sUserType.setAdapter(adapter);
 
 
 
         //If the cancel button is clicked, return to the login screen
-        cancel_button.setOnClickListener(new View.OnClickListener() {
+        bCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), LoginActivity.class);
@@ -63,11 +79,15 @@ public class RegistrationActivity extends AppCompatActivity {
         final AlertDialog.Builder badInputAlert = new AlertDialog.Builder(this);
 
 
-        register_button.setOnClickListener(new View.OnClickListener() {
+        bRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
             if (attemptRegistration()) {
+                userList = userManager.saveUsers();
                 Intent i = new Intent(getApplicationContext(), MainPageActivity.class);
+                Bundle b = new Bundle();
+                b.putSerializable("userList", userList);
+                i.putExtras(b);
                 startActivity(i);
             } else {
                 badInputAlert.setTitle("Whoops! You entered invalid user credentials.");
@@ -79,8 +99,6 @@ public class RegistrationActivity extends AppCompatActivity {
 
             }
         });
-
-
     }
 
     /**
@@ -93,15 +111,7 @@ public class RegistrationActivity extends AppCompatActivity {
         String email = ETemail.getText().toString();
         String address = ETaddress.getText().toString();
         String password = ETpassword.getText().toString();
-        String id = mDatabase.push().getKey();
-        UserTypes userType = (UserTypes)user_type_spinner.getSelectedItem();
-
-        /*TODO DELETE: No longer necessary because of hints*/
-//        //make sure the user has changed the prefilled text boxes
-//        if (name.equals("Name") || email.equals("Email") || address.equals("Home Address")
-//                || password.equals("Password")) {
-//            return false;
-//        }
+        UserTypes userType = (UserTypes)sUserType.getSelectedItem();
 
         //if the email does not contain an @ sign or a dot then it is invalid
         if (!email.contains("@") || !email.contains(".")) {
@@ -122,37 +132,29 @@ public class RegistrationActivity extends AppCompatActivity {
             return false;
         }
 
-        /*TODO DELETE: may not need UserManager now that Firebase is set up, i.e. clear switch cases
-        * of UserManager.myUserManager.putPerson...*/
         switch (userType) {
             case USER:
-                User u = new User(name, email, address, password, id);
-                mDatabase.child("users").child(id).setValue(u);
-                UserManager.myUserManager.putPerson(email, u);
-                setCurrentPerson(UserManager.myUserManager.getPerson(email));
+                User u = new User(name, email, address, password);
+                userManager.putPerson(email, u);
+                setCurrentPerson(userManager.getPerson(email));
                 break;
             case WORKER:
-                Worker w = new Worker(name, email, address, password, id);
-                mDatabase.child("workers").child(id).setValue(w);
-                UserManager.myUserManager.putPerson(email, w);
-                setCurrentPerson(UserManager.myUserManager.getPerson(email));
+                Worker w = new Worker(name, email, address, password);
+                userManager.putPerson(email, w);
+                setCurrentPerson(userManager.getPerson(email));
                 break;
             case MANAGER:
-                Manager m = new Manager(name, email, address, password, id);
-                mDatabase.child("managers").child(id).setValue(m);
-                UserManager.myUserManager.putPerson(email, m);
-                setCurrentPerson(UserManager.myUserManager.getPerson(email));
+                Manager m = new Manager(name, email, address, password);
+                userManager.putPerson(email, m);
+                setCurrentPerson(userManager.getPerson(email));
                 break;
             case ADMINISTRATOR:
-                Administrator a = new Administrator(name, email, address, password, id);
-                mDatabase.child("administrators").child(id).setValue(a);
-                UserManager.myUserManager.putPerson(email, a);
-                setCurrentPerson(UserManager.myUserManager.getPerson(email));
+                Administrator a = new Administrator(name, email, address, password);
+                userManager.putPerson(email, a);
+                setCurrentPerson(userManager.getPerson(email));
                 break;
         }
-
-
-
+        userList = userManager.saveUsers();
         return true;
     }
 }
