@@ -52,14 +52,12 @@ public class RegistrationActivity extends AppCompatActivity {
         ETaddress = (EditText) findViewById(R.id.ETaddress);
         ETpassword = (EditText) findViewById(R.id.ETpassword);
         ETpassword.setText(password, TextView.BufferType.EDITABLE);
-
         bRegister = (Button) findViewById(R.id.bRegister);
         bCancel = (Button) findViewById(R.id.bCancel);
         sUserType = (Spinner) findViewById(R.id.sUserType);
 
         ArrayAdapter<UserTypes> adapter =
                 new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, UserTypes.values());
-
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sUserType.setAdapter(adapter);
 

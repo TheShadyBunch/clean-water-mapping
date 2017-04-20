@@ -139,6 +139,28 @@ public class MainPageActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+//        Button mNewPurityReportButton = (Button) findViewById(R.id.new_purity_report_button);
+//        mNewPurityReportButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(getApplicationContext(), newPurityReport.class));
+//            }
+//        });
+//
+//        Button mHistoryGraphButton = (Button)findViewById(R.id.history_graph_button);
+//        mHistoryGraphButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(getApplicationContext(), HistoryGraphActivity.class));
+//            }
+//        });
+//
+//        if (current instanceof Manager) {
+//            mViewPurityReportsButton.setVisibility(View.VISIBLE);
+//            mNewPurityReportButton.setVisibility(View.VISIBLE);
+//            mHistoryGraphButton.setVisibility(View.VISIBLE);
+//        }
     }
 
     public void saveUsers() throws IOException {

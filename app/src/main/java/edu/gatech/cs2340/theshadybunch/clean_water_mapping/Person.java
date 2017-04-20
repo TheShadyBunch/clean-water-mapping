@@ -24,6 +24,7 @@ public abstract class Person implements Serializable {
     private boolean isBanned = false;
     private boolean isBlocked = false;
     private List myReports;
+
     private static Person currentPerson;
 
     private static final long serialVersionUID = 160518191514L;
@@ -120,6 +121,15 @@ public abstract class Person implements Serializable {
      * @return the person's usertype
      */
     public UserTypes getUserType() { return userType; }
+
+    // --Commented out by Inspection START (4/3/2017 2:37 PM):
+//    /**
+//     * @return the person's user id
+//     */
+//    public String getId() {
+//        return id;
+//    }
+// --Commented out by Inspection STOP (4/3/2017 2:37 PM)
 
     /**
      * Sets the user's name

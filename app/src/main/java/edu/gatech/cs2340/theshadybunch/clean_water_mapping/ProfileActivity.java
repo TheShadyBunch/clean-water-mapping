@@ -26,7 +26,6 @@ public class ProfileActivity extends AppCompatActivity {
     private final String email = current.getEmail();
     private final String address = current.getAddress();
     private final String password = current.getPassword();
-
     private HashMap<String, Person> userList;
     private UserManager userManager;
 
